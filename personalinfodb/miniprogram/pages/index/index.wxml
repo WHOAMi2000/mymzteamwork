@@ -1,0 +1,27 @@
+<button type="primary" bindtap="getData">点击获取数据</button>
+
+<button type="primary" bindtap="addData">点击插入数据</button>
+
+<button type="primary" bindtap="updateData">点击更新数据</button>
+
+<button type="primary" bindtap="deleteData">点击删除数据</button>
+
+<view>
+  <view>查询结果</view>
+  <text>{{queryData}}</text>
+</view>
+
+<view>
+  <view>插入结果</view>
+  <text>{{addData}}</text>
+</view>
+
+<view>
+  <view>更新结果</view>
+  <text>{{updateData}}</text>
+</view>
+
+<view>
+  <view>删除结果</view>
+  <text>{{deleteData}}</text>
+</view>

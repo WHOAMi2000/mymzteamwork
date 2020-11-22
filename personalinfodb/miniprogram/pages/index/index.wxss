@@ -1,0 +1,26 @@
+button{
+  margin: 20px;
+}
+
+view{
+  width: 80%;
+  height:80px;
+  margin: 10px 10%;
+  background: whitesmoke;
+  border: 1px solid black;
+}
+view view{
+  width: 100%;
+  height:20px;
+  margin: 0;
+  border: none;
+  text-align: center;
+  border-bottom:1px dashed black;
+}
+
+view text{
+  width: 100%;
+  height:55px;
+  margin:0;
+  background: white;
+}
