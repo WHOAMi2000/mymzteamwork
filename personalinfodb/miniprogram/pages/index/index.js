@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    src: '../../images/01.jpg',
     queryData:'',
     addData:'',
     updateData:'',
@@ -95,6 +96,7 @@ Page({
     });
   },
 
+  
   /**
    * 生命周期函数--监听页面加载
    */

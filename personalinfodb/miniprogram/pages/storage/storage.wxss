@@ -1,0 +1,65 @@
+/* pages/storage/storage.wxss */
+/*
+button{
+  margin: 20px;
+}
+
+view{
+  width: 80%;
+  height:200px;
+  margin-left: 10%;
+  background: whitesmoke;
+}
+
+image{
+  width: 80%;
+  height: 80%;
+  margin-left: 10%;
+  margin-top: 6.5%;
+  background: white;
+}
+
+text{
+  display: block;
+  width:80%;
+  height: 40px;
+  margin-left: 10%;
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 40px;
+  background: whitesmoke;
+}
+*/
+/* 上传图片 */ 
+.images-boxc 
+{ 
+  position: relative; 
+  border: dashed 1px #bfbfbf; 
+  width: 139rpx; 
+  height: 139rpx; 
+  margin-right: 32rpx; 
+  margin-bottom: 32rpx; 
+}
+.delete-image 
+{ 
+  position: absolute; 
+  width: 30rpx; 
+  height: 30rpx; 
+  right: 16rpx; 
+  top: 16rpx; 
+}
+.add-image 
+{ 
+  display: flex; 
+  flex-wrap: wrap; 
+}
+
+.image_size 
+{ 
+  width: 139rpx; 
+  height: 139rpx; 
+}
+.image_sizen 
+{
+  height: 142rpx; 
+}

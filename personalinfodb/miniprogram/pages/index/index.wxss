@@ -1,3 +1,4 @@
+/*
 button{
   margin: 20px;
 }
@@ -23,4 +24,39 @@ view text{
   height:55px;
   margin:0;
   background: white;
+}
+
+*/
+/* pages/me/me.wxss */
+.image {
+  width: 100%;
+}
+.container {
+  width: 100%;
+}
+
+.percontent {
+  width: 100%;
+}
+
+.name {
+  text-align: center;
+}
+
+.user_name {
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.briefintro {
+  font-size: medium;
+}
+
+.pic {
+  width: 100%;
+}
+
+.pic_info {
+  display: flex;
 }
