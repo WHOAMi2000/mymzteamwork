@@ -1,0 +1,32 @@
+/* pages/cloud/cloud.wxss */
+
+button{
+  margin: 20px;
+}
+
+view{
+  width: 80%;
+  height: 200px;
+  margin-left: 10%;
+  background: whitesmoke;
+}
+
+image{
+  width: 80%;
+  height: 80%;
+  margin-top: 8%;
+  margin-left: 10%;
+  background: white;
+}
+
+text{
+  display: block;
+  width: 80%;
+  height: 40px;
+  margin-left: 10%;
+  margin-top: 20px;
+  font-size: 20px;
+  padding-left: 10px;
+  line-height: 40px;
+  background: whitesmoke;
+}

@@ -1,0 +1,10 @@
+<!--pages/cloud/cloud.wxml-->
+<button class="primary" bindtap="uploadFile">点击上传</button>
+
+<view>
+  <image src="{{imgUrl}}"></image>
+</view>
+
+<button class="primary" bindtap="downloadFile">点击下载</button>
+
+<text>下载信息：{{downloadInfo}}</text>
