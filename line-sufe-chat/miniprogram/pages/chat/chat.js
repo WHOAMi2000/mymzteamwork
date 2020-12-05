@@ -12,6 +12,7 @@ var idlarge = "";
 var thisdirection = "";
 var inputVal = "";
 var Message = [];
+var record = 0;
 
 const formatTime = date => {
     const year = date .getFullYear ()
@@ -167,6 +168,7 @@ Page({
       // 利用concat函数连接新数据与旧数据
       // 并更新Message_nums  
         x = old_data.concat(res.data).length;
+        console.log('chuzhi' + x);
         Message = old_data.concat(res.data);
         this.setData({
           Message_nums: x
@@ -184,18 +186,6 @@ Page({
       })
       var otherdirection = String(1 - parseInt(thisdirection));
       console.log(otherdirection);
-      db.collection('Chatting').where({
-        id: idsmall,
-        id2: idlarge,
-        direction: otherdirection
-      }).watch({
-        onChange:res=>{
-          console.log(res);
-        },
-        onError:function(e){
-          console.log(e);
-        }
-      })
       wx.stopPullDownRefresh();
   },
 
@@ -210,7 +200,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
-
+    var that = this;
+    db.collection('Chatting').orderBy('time','desc').limit(1)
+      .where({
+        id: idsmall,
+        id2: idlarge,
+      }).watch({
+        onChange: function(res) {
+          if(record != 0 && res.docChanges[0].doc.direction != thisdirection){
+            console.log('docs\'s changed events', ( res.docChanges[0].doc.text))
+            Message.push({
+              text: res.docChanges[0].doc.text
+            })
+            msgList.push({
+              speaker: 'you',
+              contentType: 'text',
+              content: res.docChanges[0].doc.text
+            })
+            that.setData({
+              msgList
+            })
+          }
+          record++;
+        },
+        onError: function(err) {
+          console.error( err)
+        }
+      })
   },
 
   /**
@@ -234,7 +250,7 @@ Page({
     wx.showNavigationBarLoading();
     console.log('success');
     let old_data = Message;
-    let x = Message.length;
+    let x = msgList.length;console.log("x的数量为",x);
     db.collection('Chatting').where({
       id:idsmall,
       id2:idlarge
@@ -245,8 +261,8 @@ Page({
       // 利用concat函数连接新数据与旧数据
       // 并更新emial_nums  
       Message = old_data+res.data.reverse();
-      x = Message.length;
-      console.log(Message)
+      x = Message.length;console.log("返回的数量为",res.data.length);
+      //console.log(Message)
       for(var i = res.data.length-1; i >= 0 ; i--){
         var temp = '';
         if(res.data[i].direction == thisdirection){
@@ -267,7 +283,7 @@ Page({
         inputVal
       })
       this.setData({
-        toView: 'msg-' + 0
+        toView: 'msg-' + res.data.length
       })
     })
      .catch(err => {
