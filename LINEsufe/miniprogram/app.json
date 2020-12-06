@@ -1,10 +1,14 @@
 {
   "pages":[
     
+    "pages/login/login",
+    "pages/register/register",
     "pages/find/find",
     "pages/mine/mine",
     "pages/chatlist/chatlist",
     "pages/chat/chat",
+    
+    
     "pages/infodetails/infodetails",
     "pages/editinfo/editinfo"
   ],

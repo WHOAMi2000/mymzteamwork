@@ -1,0 +1,11 @@
+<view class="container">
+  <text class="header">登录</text>
+    <form bindsubmit="onLogin">
+      <view class="userid">用户名</view>
+      <input name="userid" placeholder="Username"></input>
+      <view class="password">密码</view>
+      <input name="password" placeholder="Password" password></input>
+      <button form-type="submit" hover-class="hover">登录</button>
+    </form>
+    <button  hover-class="hover" bindtap="turntoregister">注册</button>
+</view>

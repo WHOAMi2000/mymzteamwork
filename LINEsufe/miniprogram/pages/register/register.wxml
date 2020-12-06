@@ -1,0 +1,13 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+  <text class="header">没有账号：注册</text>
+  <form bindsubmit="onRegister">
+    <view class = "userid">账号</view>
+    <input name="userid" placeholder="userid"></input>
+    <view class = "password1">输入密码</view>
+    <input name="password1" placeholder="Password"></input>
+    <view class = "password2">确认密码</view>
+    <input name="password2" placeholder="Password Confirm"></input>
+    <button form-type="submit" hover-class="hover">注册</button>
+  </form>
+</view>
