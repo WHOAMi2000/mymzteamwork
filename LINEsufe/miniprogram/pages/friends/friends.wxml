@@ -1,0 +1,12 @@
+<view class="page">
+    <block wx:for="{{friendlist}}" wx:key="index">
+        <view class="content" catchtap="onTapNavigateTo" data-id="{{item.id}}" >
+            <view class="touxiang">
+                <image src="{{item.photo}}" mode="aspectFill"></image>
+            </view> 
+            <view class="nicheng">
+                <view class="nickname">{{item.name}}</view>
+            </view>
+        </view>
+    </block>
+</view>

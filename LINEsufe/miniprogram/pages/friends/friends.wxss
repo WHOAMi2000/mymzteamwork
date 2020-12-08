@@ -3,47 +3,39 @@ page {
   background-color: #fff;
   opacity: .8;
 }
-.weui-tab__content {
+.content {
   width: 100%;
   height: 150rpx;
   box-sizing: border-box;
 }
-.weui-media-box__hd {
+.touxiang {
   width: 160rpx;
-  height: 100rpx;
+  height: 150rpx;
   float: left;
 }
-.weui-media-box__hd image {
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 60rpx;
+.touxiang image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 80rpx;
   margin-top: 20rpx;
   margin-left: 20rpx;
   float: left;
 }
-.weui-media-box__bd {
+.nicheng {
   width: 590rpx;
   height: 150rpx;
   border-bottom: .5rpx solid rgb(158, 141, 141);
   float: right;
 }
-.weui-media-box__nickname {
+.nickname {
   width: 380rpx;
   height: 50rpx;
   float: left;
   font-size: 36rpx;
   columns: #334038;
   text-align: left;
-  margin-top: 25rpx;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
   margin-left: 10rpx;
 }
-.weui-media-box__message {
-  /* width: 550rpx; */
-  height: 30rpx;
-  float: left;
-  font-size: 32rpx;
-  color: grey;
-  text-align: left;
-  margin-top: 80rpx;
-  margin-left: -380rpx;
-}
+

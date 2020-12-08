@@ -142,10 +142,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //var id1 = options.id1;
-    //var id2 = option.id2;
-    var id1 = '10002';
-    var id2 = '10001';
+    var id1 = options.id1;
+    var id2 = options.id2;
+    //var id1 = '10002';
+   // var id2 = '10001';
     idMe = id1;
     idYou = id2;
     if(parseInt(idMe) > parseInt(idYou))
@@ -234,14 +234,36 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    msgList = [];
+    windowWidth = wx.getSystemInfoSync().windowWidth;
+    windowHeight = wx.getSystemInfoSync().windowHeight;
+    keyHeight = 0;
+    idMe = "";
+    idYou = "";
+    idsmall = "";
+    idlarge = "";
+    thisdirection = "";
+    inputVal = "";
+    Message = [];
+    record = 0;
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    msgList = [];
+    windowWidth = wx.getSystemInfoSync().windowWidth;
+    windowHeight = wx.getSystemInfoSync().windowHeight;
+    keyHeight = 0;
+    idMe = "";
+    idYou = "";
+    idsmall = "";
+    idlarge = "";
+    thisdirection = "";
+    inputVal = "";
+    Message = [];
+    record = 0;
   },
 
   /**
@@ -313,5 +335,17 @@ Page({
    */
   toBackClick: function() {
     wx.navigateBack({})
+    msgList = [];
+    windowWidth = wx.getSystemInfoSync().windowWidth;
+    windowHeight = wx.getSystemInfoSync().windowHeight;
+    keyHeight = 0;
+    idMe = "";
+    idYou = "";
+    idsmall = "";
+    idlarge = "";
+    thisdirection = "";
+    inputVal = "";
+    Message = [];
+    record = 0;
   }
 })
