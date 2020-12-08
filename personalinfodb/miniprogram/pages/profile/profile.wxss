@@ -1,0 +1,72 @@
+
+button{
+  margin: 20px;
+}
+
+.photo {
+  width: 100%;
+  height: 100rpx;
+}
+view{
+  width: 80%;
+  height:80px;
+  margin: 10px 10%;
+  background: whitesmoke;
+  border: 1px solid black;
+}
+view view{
+  width: 100%;
+  height:20px;
+  margin: 0;
+  border: none;
+  text-align: center;
+  border-bottom:1px dashed black;
+}
+
+view text{
+  width: 100%;
+  height:55px;
+  margin:0;
+  background: white;
+}
+
+/* pages/me/me.wxss */
+.image {
+  width: 100%;
+}
+.container {
+  width: 100%;
+}
+
+.percontent {
+  width: 100%;
+}
+
+.name {
+  text-align: center;
+}
+
+.user_name {
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.briefintro {
+  font-size: medium;
+}
+
+.pic {
+  width: 100%;
+}
+
+.pic_info {
+  display: flex;
+}
+
+.imgs{
+  width: 150rpx;
+  height: 150rpx;
+  margin: 50rpx;
+  float: left;
+}
