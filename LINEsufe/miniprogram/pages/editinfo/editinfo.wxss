@@ -1,0 +1,77 @@
+.page {
+  width: 100%;
+  height: 100%;
+}
+.page__hd {
+  width: 100%;
+  height: 100rpx;
+  background-color: #ffffff;
+}
+
+.page__hd.title{
+  /* float: left; */
+  font-size: 42rpx;
+  text-align: left;
+  color: black;
+  line-height: 100rpx;
+}
+
+.page__bd {
+  width: 100%;
+  height: 1800rpx;
+  letter-spacing: 4rpx;
+  overflow-y: scroll;
+}
+
+.user-info {
+  width: 100%;
+ 
+
+}
+.name {
+  font-size: 42rpx;
+  letter-spacing: 5rpx;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+}
+
+.grade {
+
+  
+}
+.school {
+
+  
+}
+
+
+
+.user-label {
+
+}
+.mylabel {
+
+}
+
+.firlab {
+
+}
+.seclab {
+  
+}
+.des__title {
+  color: #999999;
+  text-align: left;
+
+}
+.des__add {
+  float: left;
+  color: #999999;
+  font-size: 48rpx;
+
+}
+.des__input {
+  float: left;
+  color: grey;
+
+}
