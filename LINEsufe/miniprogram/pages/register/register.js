@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value1: '',
+    value2: '',
+    value3: '',
     count:0
   },
   

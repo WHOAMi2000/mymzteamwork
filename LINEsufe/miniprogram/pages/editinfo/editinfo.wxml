@@ -1,32 +1,129 @@
 <view class="page">
 
-    <view class="page__hd">
-        <view class="page__hd title">编辑个人资料</view>
+    <view class="title">编辑个人资料</view>
+
+    <view class="graph">
+        <i-steps current="{{currentStep}}">
+            <i-step>
+                <view slot="title">
+                    基础信息
+                </view>
+                <view slot="content">
+                    昵称、性别、学校、院系
+                </view>
+            </i-step>
+            <i-step>
+                <view slot="title">
+                    配对信息
+                </view>
+                <view slot="content">
+                    爱好、特长、标签
+                </view>
+            </i-step>
+            <i-step>
+                <view slot="title">
+                    详细信息
+                </view>
+                <view slot="content">
+                    个人介绍
+                </view>
+            </i-step>
+        </i-steps>
     </view>
 
-    <view class="page__bd">
-        <view class="user-info">
-            <view class="name">彭于晏</view>
-            
-                <view class="grade">大三</view>
-                <view class="school">信息学院</view>
-                <view class="conste">天秤座</view>
-            
-            <view class="active">点击编辑个人信息（如姓名、年龄）</view>
-        </view>
-        
-        <view class="user-label">
-            <view class="mylabel">我的标签</view>
-            <view class="label__add">+</view>
-            <view class="label__input">添加标签</view>
-            <view class="firlab">萌萌哒</view>
-            <view class="seclab">拖延症</view>
-        </view>
-
-        <view class="des">
-            <view class="des__title">自我描述</view>
-            <view class="des__add">+</view>
-            <view class="des__input">添加描述</view>
-        </view>
+    <view wx:if="{{currentStep == 0}}"> 
+        <view class="subtitle">基础信息</view>
+        <i-panel class="user-info"  > 
+        <i-collapse>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="昵称">
+                <view slot="content">
+                    <i-input value="{{ nikeName }}" type="textarea" title="昵称" autofocus/>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="年龄">
+                <view slot="content">
+                    <i-input value="{{ age }}" type="textarea" title="年龄"/>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="性别">
+                <view slot="content">
+                    <i-radio-group current="{{currentGender}}" bindchange="handleFruitChange">
+                        <i-radio key="1" value="男"></i-radio>
+                        <i-radio key="2" value="女"></i-radio>
+                        <i-radio key="3" value="先不展示"></i-radio>
+                    </i-radio-group>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="学历">
+                <view slot="content">
+                    <i-radio-group current="{{currentED}}" bindchange="handleEDChange">
+                        <i-radio key="1" value="本科"></i-radio>
+                        <i-radio key="2" value="研究生"></i-radio>
+                        <i-radio key="3" value="博士生"></i-radio>
+                        <i-radio key="4" value="其他"></i-radio>
+                    </i-radio-group>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="学校">
+                <view slot="content">
+                    <i-input value="{{ collegeName }}" type="textarea" title="大学名称"/>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="学院">
+                <view slot="content">
+                    <i-input value="{{ schoolName }}" type="textarea" title="学院"/>
+                </view>
+            </i-collapse-item>
+        </i-collapse>
+    </i-panel>
+    
     </view>
+    <view wx:if="{{currentStep == 1}}"> 
+        <view class="subtitle">配对信息</view>
+        <i-panel class="user-info" > 
+        <i-collapse>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="爱好特长">
+                <view slot="content">
+                    <i-input value="{{ hobby1 }}" type="textarea" title="爱好1" />
+                    <i-input value="{{ hobby2 }}" type="textarea" title="爱好2" />
+                    <i-input value="{{ hobby3 }}" type="textarea" title="爱好3" />
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="标签">
+                <view slot="content">
+                    <i-input value="{{ tag1 }}" type="textarea" title="标签1" />
+                    <i-input value="{{ tag2 }}" type="textarea" title="标签2" />
+                    <i-input value="{{ tag3 }}" type="textarea" title="标签3" />
+                </view>
+            </i-collapse-item>
+        </i-collapse>
+    </i-panel>
+    
+    </view>
+    <view wx:if="{{currentStep == 2}}"> 
+        <view class="subtitle">详细信息</view>
+        <i-panel class="user-info" > 
+            <i-input value="{{ selfIntro }}" type="textarea" title="自我介绍" maxlength="50"/>
+        </i-panel>
+
+    </view>
+    <button bindtap="handleClick" class='user_input_text'>
+        <i-icon type="enter" size="28" color="white"/>
+    </button>
 </view>

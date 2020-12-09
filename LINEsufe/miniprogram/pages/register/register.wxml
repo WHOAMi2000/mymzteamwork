@@ -1,13 +1,31 @@
 <!--pages/register/register.wxml-->
 <view class="container">
-  <text class="header">没有账号：注册</text>
-  <form bindsubmit="onRegister">
-    <view class = "userid">账号</view>
-    <input name="userid" placeholder="userid"></input>
-    <view class = "password1">输入密码</view>
-    <input name="password1" placeholder="Password"></input>
-    <view class = "password2">确认密码</view>
-    <input name="password2" placeholder="Password Confirm"></input>
-    <button form-type="submit" hover-class="hover">注册</button>
-  </form>
+  <view class="image">
+    <image class="pic" src="/images/male.png" mode="aspectFill" ></image>
+    <image class="pic" src="/images/female.png" mode="aspectFill" ></image>
+  </view>
+  <view class="form">
+    <form bindsubmit="onRegister">
+      <view class = "inline userid">
+        <view class = "left">输入账号</view>
+        <input name="userid" class = "right"></input>
+      </view>
+      <view class = "inline">
+        <view class = "left">输入密码</view>
+        <input name="password1" class = "right" password="true"></input>
+      </view>
+      <view class = "inline">
+        <view class = "left">确认密码</view>
+        <input name="password2" class= "right" password="true"></input>
+      </view>
+
+      <!-- <i-panel>
+          <i-input value="{{ value1 }}" type="text" title="账号" autofocus placeholder="请输入账户名" />
+          <i-input value="{{ value2 }}" type="number" title="密码" placeholder="请输入密码" />
+          <i-input value="{{ value3 }}" type="password" title="确认密码" placeholder="请再次输入密码"/>
+      </i-panel> -->
+      <button class = "button" form-type="submit" hover-class="hover">注册</button>
+
+    </form>
+  </view>
 </view>

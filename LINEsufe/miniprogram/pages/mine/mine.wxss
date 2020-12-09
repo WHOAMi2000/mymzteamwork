@@ -2,15 +2,35 @@
 .container {
   width: 100%;
   padding-top: 50rpx;
+  background-color: white;
 }
-
+.introduction{
+  width: 80%;
+  margin-bottom: 20px;
+}
+.introduction_title{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 10px;
+}
+p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .tupian {
   width: 300rpx;
   height: 300rpx;
   border-radius: 300rpx;
   float: center;
 }
-
+.i-tags{
+  display: flex;
+  justify-content: space-around;
+}
+.label{
+  margin-bottom: 20px;
+}
+.passive{
+  margin-bottom: 20px;
+}
 .percontent {
   width: 100%;
   display: flex;/* 如果把盒子设置为弹性盒子,必须要加的 */  
@@ -22,7 +42,7 @@
   text-align: center;
   margin: 20rpx;
   line-height: 1;
-  color: #342158;
+  color: #495060;
 }
 
 .user_name {
@@ -58,4 +78,22 @@
 .toedit image{
   width: 80rpx;
   height: 80rpx;
+}
+.item{
+  text-align: center;
+  margin-top: 15px;
+  border-bottom: grey solid 1px;
+}
+.intro{
+  margin-bottom: 10px;
+}
+.name{
+  font-size: 18px;
+}
+.academy{
+  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.avatar{
+  float: left;
 }

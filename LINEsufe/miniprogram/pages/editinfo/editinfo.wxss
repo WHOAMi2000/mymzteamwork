@@ -1,32 +1,33 @@
 .page {
   width: 100%;
-  height: 100%;
+  height: 700px;
+  background-color: white;
 }
-.page__hd {
-  width: 100%;
-  height: 100rpx;
-  background-color: #ffffff;
+.graph{
+  margin-top: 20px;
 }
-
-.page__hd.title{
-  /* float: left; */
-  font-size: 42rpx;
-  text-align: left;
-  color: black;
-  line-height: 100rpx;
+.user_input_text{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: rgb(90, 122, 221);
 }
-
-.page__bd {
-  width: 100%;
-  height: 1800rpx;
-  letter-spacing: 4rpx;
-  overflow-y: scroll;
+.title{
+  margin-top: 15px;
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Arial Narrow Bold', sans-serif;
+}
+.collapse{
+  font-size: 24px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .user-info {
-  width: 100%;
- 
-
+  /* font-size: 28px;
+  font-family: Georgia, 'Times New Roman', Times, serif; */
+  width: 50%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 .name {
   font-size: 42rpx;
@@ -34,44 +35,11 @@
   margin-top: 30rpx;
   margin-left: 40rpx;
 }
-
-.grade {
-
-  
-}
-.school {
-
-  
-}
-
-
-
-.user-label {
-
-}
-.mylabel {
-
-}
-
-.firlab {
-
-}
-.seclab {
-  
-}
-.des__title {
-  color: #999999;
-  text-align: left;
-
-}
-.des__add {
-  float: left;
-  color: #999999;
-  font-size: 48rpx;
-
-}
-.des__input {
-  float: left;
-  color: grey;
-
+.subtitle{
+  font-size: 21px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
