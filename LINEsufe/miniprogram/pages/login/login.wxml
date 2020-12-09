@@ -1,11 +1,20 @@
 <view class="container">
-  <text class="header">登录</text>
+  <view class="image">
+    <image class="pic" src="/images/logo.png" mode="aspectFill" ></image>
+  </view>
+  <!-- <text class="header">登录</text> -->
+  <view class="form">
     <form bindsubmit="onLogin">
-      <view class="userid">用户名</view>
-      <input name="userid" placeholder="Username"></input>
-      <view class="password">密码</view>
-      <input name="password" placeholder="Password" password></input>
-      <button form-type="submit" hover-class="hover">登录</button>
+      <view class = "inline userid">
+        <view class = "left">用户名</view>
+        <input name="userid" class = "right"></input>
+      </view>
+      <view class = "inline">
+        <view class = "left">密码</view>
+        <input name="password" class = "right" password="true"></input>
+      </view>
+      <button class="login" form-type="submit" hover-class="hover">登录</button>
     </form>
-    <button  hover-class="hover" bindtap="turntoregister">注册</button>
+    <button class="register" hover-class="hover" bindtap="turntoregister">注册</button>
+  </view>
 </view>

@@ -1,1 +1,53 @@
 /* pages/login/login.wxss */
+.container {
+  width: 100%;
+  height: 700px;
+  padding-top: 50px;
+  background-color: white;
+}
+
+.pic{
+  width: 480px;
+  height: 260px;
+}
+.primary{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+}
+.form{
+  width: 300px;
+  /* margin:20px; */
+  font-family: 'Times New Roman', Times, serif;
+}
+.inline{
+  margin-top: 40px;
+  /* display:flex */
+  height: 15px;
+}
+.inline input{
+  margin-left: 15px;
+  border-bottom: 1px solid black;
+  font-family: 'Times New Roman', Times, serif;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+
+.login{
+  margin-top: 50px;
+  font-size: 20px;
+  /* color: royalblue; */
+  background-image: linear-gradient(to left top,aquamarine , aqua);}
+
+.register{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  background-image: linear-gradient(to left top, royalblue, lightskyblue);}
+
+.hover {
+    background-image: linear-gradient(to left top,pink,plum);
+}

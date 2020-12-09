@@ -1,16 +1,15 @@
 {
   "pages":[
-    
-    "pages/login/login",
-    "pages/register/register",
-    "pages/find/find",
+    "pages/editinfo/editinfo",
     "pages/mine/mine",
+    "pages/find/find",
+    
     "pages/chatlist/chatlist",
     "pages/chat/chat",
-    
-    
     "pages/infodetails/infodetails",
-    "pages/editinfo/editinfo"
+    
+    "pages/login/login",
+    "pages/register/register"
   ],
   "window":{
     "backgroundTextStyle":"light",

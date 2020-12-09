@@ -4,9 +4,45 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-
+  data : {
+    currentStep : 0,
+    collegeName : '' ,
+    schoolName : '' ,
+    nikeName : '',
+    age: '',
+    currentGender: '男',
+    position: 'left',
+    currentED:'本科',
+    tag1:'',
+    tag2:'',
+    tag3:'',
+    hobby1:'',
+    hobby2:'',
+    hobby3:'',
   },
+  changeName (e) {
+    console.log(e)
+    this.setData({
+        'value1' : e.detail.detail.value
+    })
+},
+  handleClick () {
+      const addCurrent = this.data.currentStep + 1;
+      const currentStep = addCurrent > 2 ? 0 : addCurrent;
+      this.setData({
+          'currentStep' : currentStep
+      })
+  },
+  handleFruitChange({ detail = {} }) {
+    this.setData({
+        currentGender: detail.value
+    });
+},
+handleEDChange({ detail = {} }) {
+  this.setData({
+    currentED: detail.value
+  });
+},
 
   /**
    * 生命周期函数--监听页面加载

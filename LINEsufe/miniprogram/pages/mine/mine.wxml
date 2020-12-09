@@ -2,76 +2,152 @@
 <!--pages/personal/personal.wxml-->
 <view class="container">
 
-<view class='percontent'>
-   <view class='photo'>
-      <view class="image">
-        <image class="tupian"  mode="aspectFill" src="{{src}}"></image>
-      </view>
-   </view>
-   
-   <view class='name'>
-     <text class="user_name">彭于晏</text>
-     <view class='briefintro'>不列颠哥伦比亚大学    毕业生</view>
-   </view>
-</view>
-
-<view class="details">
-    <view class="toedit">
-      <navigator url="/pages/editinfo/editinfo">
-          <image src="/images/edit.png" />
-      </navigator>
+  <view class='percontent'>
+    <view class='photo'>
+        <view class="image">
+          <image class="tupian"  mode="aspectFill" src="{{src}}"></image>
+        </view>
     </view>
     
-   <view class='pic_title' bindtap="changepics">照片</view>
-   <view class="pic">
-    <swiper indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094" indicator-pos="topCenter" circular class="swiper-tab" >
-        <block wx:for="{{me}}">
-            <swiper-item>
-                <image class="slideimages" src="{{item}}"  mode="aspectFill"></image>
-            </swiper-item>
-        </block>
-    </swiper>
+    <view class='name'>
+      <text class="user_name">彭于晏</text>
+      <view class='briefintro'>不列颠哥伦比亚大学    毕业生</view>
+      <view class="toedit">
+        <navigator url="/pages/editinfo/editinfo">
+            <i-icon type="editor" size="28" color="#80848f"/>
+        </navigator>
+      </view>
+    </view>
+
+    <view  class='introduction'>
+      <view class='introduction_title' bindtap="changeintroduction">
+       <i-icon type="addressbook" size="28" color="#80848f"/>自我描述
+      </view>
+     <p>彭于晏，1982年3月24日出生于台湾省澎湖县，毕业于不列颠哥伦比亚大学，加拿大籍华裔影视男演员、歌手。</p>
+   </view>
   </view>
 
-  
+  <view class="details">
+      
+    <!-- <view class='pic_title' bindtap="changepics">照片</view>
+    <view class="pic">
+      <swiper indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094" indicator-pos="topCenter" circular class="swiper-tab" >
+          <block wx:for="{{me}}">
+              <swiper-item>
+                  <image class="slideimages" src="{{item}}"  mode="aspectFill"></image>
+              </swiper-item>
+          </block>
+      </swiper>
+    </view> -->
 
-   <view class='looking'>
-       <view class='looking_title'>我看过谁</view>
-       <view class='people'>
-         <text class="people_name">胡歌</text>
-         <text class="people_name">吴彦祖</text>
-         <text class="people_name">张震</text>
-       </view>
-   </view>
+    <view class='label'>
+      <i-card title="标签">
+          <view class="i-tags" slot="content">
+            <i-tag 
+                name="tag1" 
+                type="border" 
+                color="red">
+                快乐
+            </i-tag>
+            <i-tag 
+                name="tag2" 
+                color="green"
+                type="border">
+                健康
+            </i-tag>
+            <i-tag 
+                name="tag3" 
+                color="blue"
+                type="border">
+                自律
+            </i-tag>
+            <i-tag 
+                name="tag1" 
+                type="border" 
+                color="red">
+                喜欢篮球
+            </i-tag>
+            <i-tag 
+                name="tag2" 
+                color="green"
+                type="border">
+                K歌达人
+            </i-tag>
+            <i-tag 
+                name="tag3" 
+                color="blue"
+                type="border">
+                老友记
+            </i-tag>
+          </view>
+          <view slot="footer">更多</view>
+        </i-card>
+    </view>
 
-   <view class='looked'>
-       <view class='looked_title'>谁看过我</view>
-       <view class='people'>
-         <text class="people_name">胡歌</text>
-         <text class="people_name">吴彦祖</text>
-         <text class="people_name">张震</text>
-       </view>
-   </view>
+    <view class='looking'>
+      <view class='passive'>
+        <i-card title="谁看过我">
+          <view class="item"  slot="content">
+            <i-avatar class="avatar" src="/images/female.png" size="large"></i-avatar>
+            <view class="intro">
+              <span class="name">孤独的狼</span>
+              <span class="academy">上海财经大学 商学院</span>
+              <view class="quote">陪我一起玩呀～</view>
+            </view>
+          </view>
+          <view class="item" slot="content">
+            <i-avatar class="avatar" src="/images/male.png" size="large"></i-avatar>
+            <view class="intro">
+              <span class="name">逆行的雪豹</span>
+              <span class="academy">同济大学 管理学院</span>
+              <view class="quote">我喜欢看看大海，找个人陪我勇闯四方</view>
+            </view>
+          </view>
+          <view class="item" slot="content">
+            <i-avatar class="avatar" src="/images/sufe.jpg" size="large"></i-avatar>
+            <view class="intro">
+              <span class="name">货拉拉</span>
+              <span class="academy">上海财经大学 人文学院</span>
+              <view class="quote">您好,我们货拉拉拉不拉拉布拉多取决于我们货拉拉在拉拉布拉多时拉布拉多拉的多不多。</view>
+            </view>
+          </view>
+          <view slot="footer">更多</view>
+        </i-card>
+      </view>
+      <view class='active'>
+        <i-card  title="我看过谁">
+          <view class="item"  slot="content">
+            <i-avatar class="avatar" src="/images/female.png" size="large"></i-avatar>
+            <view class="intro">
+              <span class="name">孤独的狼</span>
+              <span class="academy">上海财经大学 商学院</span>
+              <view class="quote">陪我一起玩呀～</view>
+            </view>
+          </view>
+          <view class="item" slot="content">
+            <i-avatar class="avatar" src="/images/male.png" size="large"></i-avatar>
+            <view class="intro">
+              <span class="name">逆行的雪豹</span>
+              <span class="academy">同济大学 管理学院</span>
+              <view class="quote">我喜欢看看大海，找个人陪我勇闯四方</view>
+            </view>
+          </view>
+          <view class="item" slot="content">
+            <i-avatar class="avatar" src="/images/sufe.jpg" size="large"></i-avatar>
+            <view class="intro">
+              <span class="name">货拉拉</span>
+              <span class="academy">上海财经大学 人文学院</span>
+              <view class="quote">您好,我们货拉拉拉不拉拉布拉多取决于我们货拉拉在拉拉布拉多时拉布拉多拉的多不多。</view>
+            </view>
+          </view>
+          <view slot="footer">更多</view>
+        </i-card>
+      </view>
+    </view>
 
-   <view class='label'>
-     <view class='label_title' bindtap="changelabel">标签</view>
-     <view class='label_info'>
-       <text class="labels">演员 </text>
-       <text class="labels">歌手 </text>
-       <text class="labels">白羊座</text>
-     </view>
-   </view>
 
-  
-   
 
-   <view  class='introduction'>
-     <view class='introduction_title' bindtap="changeintroduction">自我描述</view>
-     <text class='introduction_info'>
-       彭于晏，1982年3月24日出生于台湾省澎湖县，毕业于不列颠哥伦比亚大学，加拿大籍华裔影视男演员、歌手。
-2002年，因出演个人首部电视剧《爱情白皮书》 ，从而进入演艺圈。2005年，因在仙侠剧《仙剑奇侠传》中饰演唐钰一角而受到关注。2006年，主演剧情片《六号出口》。2007年，凭借爱情片《基因决定我爱你》提名第44届台湾电影金马奖最佳新演员，并为金马短片单元制作片头，完成了个人导演处女作。2009年，发行个人首张EP《非爱不可》。
-     </text>
-   </view>
-</view>
+    
+  </view>
 
 </view>
