@@ -1,10 +1,12 @@
 {
   "pages":[
-    "pages/editinfo/editinfo",
-    "pages/mine/mine",
-    "pages/find/find",
     
-    "pages/chatlist/chatlist",
+    "pages/friends/friends",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/find/find",
+    "pages/mine/mine",
+    
     "pages/chat/chat",
     "pages/infodetails/infodetails",
     
@@ -31,7 +33,7 @@
         "selectedIconPath": "images/find1.png"
       },
       {
-        "pagePath": "pages/chatlist/chatlist",
+        "pagePath": "pages/friends/friends",
         "text": "聊天",
         "iconPath": "images/chat0.png",
         "selectedIconPath": "images/chat1.png"
