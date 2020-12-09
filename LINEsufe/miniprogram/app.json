@@ -8,10 +8,8 @@
     "pages/mine/mine",
     
     "pages/chat/chat",
-    "pages/infodetails/infodetails",
-    
-    "pages/login/login",
-    "pages/register/register"
+    "pages/infodetails/infodetails"
+  
   ],
   "window":{
     "backgroundTextStyle":"light",
