@@ -66,13 +66,13 @@ Page({
       password: password
     }).get().then(res => {
       if (res.data.length) {
-        wx.setStorageSync('userid', userid); //将user_name存入本地缓存
+        wx.setStorageSync('id', res.data[0].id); //将user_name存入本地缓存
         wx.showModal({
           title: "提示",
           content: "登陆成功"
         })
-        wx.redirectTo({
-          url: '../../pages/profile/profile',
+        wx.switchTab({
+          url: '../find/find',
         })
       } else {
         wx.showModal({
