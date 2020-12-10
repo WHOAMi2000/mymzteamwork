@@ -14,6 +14,14 @@ Page({
   radioChange: function (e) {
     console.log(e.detail.value)
   },
+
+  shift: function(e){
+    if(e.detail.current <= 19 && e.detail.current >= 0){
+      this.setData({
+        id: e.detail.current,
+      })
+    }
+  },
    
   nextq: function () {
     if (this.data.id < 19) {

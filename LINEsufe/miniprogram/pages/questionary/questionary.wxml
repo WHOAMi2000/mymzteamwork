@@ -1,8 +1,8 @@
 <!--pages/questionary/questionary.wxml-->
 <view class='container'>
  
- 
- <swiper class='sheet' current='{{id}}'>
+
+ <swiper class='sheet' current='{{id}}' bindchange="shift">
    <block wx:for="{{qnaire}}">
      <swiper-item>
        <form bindsubmit='submit'>
