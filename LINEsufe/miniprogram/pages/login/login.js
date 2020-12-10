@@ -86,7 +86,7 @@ Page({
   },
   turntoregister:function(){
     wx.redirectTo({
-      url: '../../pages/register/register',
+      url: '../../pages/questionary/questionary',
     })
   },
   onLoad: function (options) {
