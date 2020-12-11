@@ -6,7 +6,8 @@
   background-color: white;
 }
 .pic{
-  width: 200px;
+  width: 480px;
+  height: 260px;
 }
 .primary{
   font-family: 'Times New Roman', Times, serif;

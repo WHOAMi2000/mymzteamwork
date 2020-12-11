@@ -5,7 +5,10 @@
   background-color: white;
 }
 .introduction{
-  width: 80%;
+  width: 90%;
+  margin-bottom: 20px;
+}
+.cards{
   margin-bottom: 20px;
 }
 .introduction_title{
@@ -15,10 +18,18 @@
 p{
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.tupian {
+.avater {
   width: 300rpx;
   height: 300rpx;
   border-radius: 300rpx;
+  float: center;
+}
+.pic{
+  margin-bottom: 20px;
+  display: flex;/* 如果把盒子设置为弹性盒子,必须要加的 */  
+  align-items: center;/* 设置一个大盒子内容居中排列*/  
+}
+.slideimages{
   float: center;
 }
 .i-tags{
