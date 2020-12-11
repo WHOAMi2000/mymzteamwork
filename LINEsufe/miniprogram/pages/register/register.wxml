@@ -1,8 +1,7 @@
 <!--pages/register/register.wxml-->
 <view class="container">
   <view class="image">
-    <image class="pic" src="/images/male.png" mode="aspectFill" ></image>
-    <image class="pic" src="/images/female.png" mode="aspectFill" ></image>
+    <image class="pic" src="/images/logo.png" mode="aspectFill" ></image>
   </view>
   <view class="form">
     <form bindsubmit="onRegister">

@@ -39,8 +39,8 @@
 .login{
   margin-top: 50px;
   font-size: 20px;
-  /* color: royalblue; */
-  background-image: linear-gradient(to left top,aquamarine , aqua);}
+  /* color: teal; */
+  background-image: linear-gradient(to left top,darkseagreen , rgb(64, 228, 220));}
 
 .register{
   margin-top: 20px;
