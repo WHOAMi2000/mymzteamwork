@@ -12,7 +12,7 @@ Page({
     id: 0
   },
   radioChange: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
   },
 
   shift: function(e){
@@ -36,15 +36,15 @@ Page({
   },
    
   submit: function (e) {
-    console.log(e.detail.value);
+    //console.log(e.detail.value);
     var a = e.detail.value.answer;
     var id = this.data.id;
-    console.log(id);
+    //console.log(id);
     ans[id] = a;
     this.setData({
       answer: ans,
     })
-    console.log(this.data.answer);
+    //console.log(this.data.answer);
     if (this.data.id < 19) {
       this.setData({
         id: this.data.id + 1,

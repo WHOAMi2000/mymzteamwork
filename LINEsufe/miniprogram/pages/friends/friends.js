@@ -23,16 +23,43 @@ Page({
               var name = r.data[0].name;
               var pic = r.data[0].photourl;
               var id = r.data[0].id;
-              var friend = {
-                id:id,
-                name:name,
-                photo:pic
-              };
-              var list = this.data.friendlist;
-              list.push(friend);
-              this.setData({
-                friendlist:list
-              });
+              var idlarge = '';
+              var idsmall = '';
+              if(id > userid)
+                {
+                  idlarge = id.toString();
+                  idsmall = userid.toString();      
+                }else{
+                  idlarge = userid.toString();
+                  idsmall = id.toString();
+                }
+              db.collection('Chatting').where({
+                id: idsmall,
+                id2: idlarge
+              }).orderBy('time','desc').get().then(rm=>{
+                var message = "";
+                var time = "";
+                if(rm.data.length != 0){
+                  if(rm.data[0].text.length <= 20){
+                    message = rm.data[0].text;
+                  }else{
+                    message = rm.data[0].text.substring(0,20)+"...";
+                  }
+                  time = rm.data[0].time.substring(5,rm.data[0].time.length-3);
+                }
+                var friend = {
+                  id:id,
+                  name:name,
+                  photo:pic,
+                  message:message,
+                  time:time
+                };
+                  var list = this.data.friendlist;
+                  list.push(friend);
+                  this.setData({
+                  friendlist:list
+                  });
+              })
             });
           }
         });

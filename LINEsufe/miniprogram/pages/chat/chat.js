@@ -48,7 +48,24 @@ function initData(that) {
       content: Message[i].text
     })
   }
-  
+
+  if(msgList.length == 0){
+    var tags = "";
+    var id = parseInt(idYou)
+    db.collection('users').where({
+      id: id
+    }).get().then(res => {
+      tags = res.data[0].tags.join();
+      msgList.push({
+        speaker: 'you',
+        contentType: 'text',
+        content: "我的标签有："+tags+"，快来和我聊天吧！"
+      })
+      that.setData({
+        msgList
+      })
+    })
+  }
   that.setData({
     msgList,
     inputVal
@@ -64,7 +81,9 @@ Page({
     scrollHeight: '91vh',
     inputBottom: 0,
     Message_nums : 0,
-    focus: false
+    focus: false,
+    yp:'',
+    ip:''
   },
 
   bindKeyInput:function(e){
@@ -158,6 +177,19 @@ Page({
         idlarge = idYou;
         idsmall = idMe;
       }
+      var that = this;
+      db.collection('users').where({id:parseInt(idMe)}).get().then(res=>{
+        db.collection('users').where({id:parseInt(idYou)}).get().then(r=>{
+          var myphoto = '';
+          var youphoto = '';
+          myphoto = res.data[0].photourl;
+          youphoto = r.data[0].photourl;
+          that.setData({
+            yp:youphoto,
+            ip:myphoto
+          })
+        })
+      })
 
     let old_data = Message;
     let x = 0;
@@ -186,7 +218,7 @@ Page({
         
       })
       var otherdirection = String(1 - parseInt(thisdirection));
-      
+
       wx.stopPullDownRefresh();
   },
 

@@ -1,7 +1,7 @@
 /* @import "../../weui.wxss"; */
 page {
   background-color: #fff;
-  opacity: .8;
+  
 }
 .content {
   width: 100%;
@@ -16,7 +16,7 @@ page {
 .touxiang image {
   width: 120rpx;
   height: 120rpx;
-  border-radius: 80rpx;
+  border-radius: 20rpx;
   margin-top: 20rpx;
   margin-left: 20rpx;
   float: left;
@@ -32,10 +32,30 @@ page {
   height: 50rpx;
   float: left;
   font-size: 36rpx;
+  font-weight: bold;
   columns: #334038;
   text-align: left;
-  margin-top: 50rpx;
-  margin-bottom: 50rpx;
+  margin-top: 25rpx;
   margin-left: 10rpx;
 }
 
+.message{
+  height: 30rpx;
+  float: left;
+  font-size: 30rpx;
+  color: grey;
+  text-align: left;
+  margin-top: 90rpx;
+  margin-left: -380rpx;
+}
+
+.time{
+  width: 170rpx;
+  height: 30rpx;
+  float: right;
+  font-size: 24rpx;
+  color: grey;
+  text-align: left;
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+}
