@@ -63,14 +63,30 @@ Page({
               userid: userid,
               password: password1,
               id:count,
-              LoginCheck: userid+lianjiefu+password1
+              LoginCheck: userid+lianjiefu+password1,
+              BriefIntroduction:'',
+              SelfIntroduction:'',
+              friends:[],
+              looked:[],
+              looking:[],
+              name:'',
+              photourl:'',
+              picurl:[],
+              sex:true,
+              tags:[]
             }
           })
           wx.showModal({
             titel: "提示",
-            content: "注册成功，请前去登陆"
+            content: "注册成功!请登录",
+            duration:3000,
+            success(res){
+              wx.redirectTo({
+                url: '../login/login',
+              })
+            }
           });
-    
+          
         }
       }
     }) 
