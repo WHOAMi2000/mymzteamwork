@@ -19,9 +19,21 @@ Page({
     photos:'',
     self_introduction:'',
     userid:0,
-    url:['a'],
+    url:[],
     tags_color:['red','blue','green']
   },
+
+  unique:function(arr){            
+    for(var i=0; i<arr.length; i++){
+        for(var j=i+1; j<arr.length; j++){
+            if(arr[i].id==arr[j].id){         //第一个等同于第二个，splice方法删除第二个
+                arr.splice(j,1);
+                j--;
+            }
+        }
+    }
+    return arr;
+    },
 
   SetMydata:function() {
     wx.setStorageSync('id', 10002);
@@ -47,6 +59,7 @@ Page({
           info = {id:0,name:'',brief:''};
         })
       }
+      dinfo = this.unique(dinfo)
       for(var i=0;i<lookingid.length;i++){
         var id = lookingid[i];
         db.collection('users').where({id:id}).get().then(s=>{
@@ -57,6 +70,7 @@ Page({
           info = {id:0,name:'',brief:''};
         })
       }}
+      ginfo = this.unique(ginfo)
       wx.cloud.callFunction({
         name: 'picurl',
         data:{userid:userid,looked:res.data[0].looked,looking:res.data[0].looking},

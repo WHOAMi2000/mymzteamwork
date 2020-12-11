@@ -5,40 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    stuData: [
-      {
-      id: 0,
-      title: '彭于晏',
-      image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3879871549,4230884007&fm=26&gp=0.jpg',
-      grade: "大三",
-      school:'信息学院',
-      constellation:'双子座'
-    },
-    {
-      id: 1,
-      title: '周杰伦',
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606477362180&di=16da090f5c733960e23362ade10c2552&imgtype=0&src=http%3A%2F%2Fimg1.ali213.net%2Fpicfile%2FNews%2F2014%2F08%2F06%2Fam%2F584_20140806110326513.jpg',
-      grade: '大一',
-      school:'金融学院',
-      constellation:'处女座'
-    },
-    {
-      id: 2,
-      title: '吴亦凡',
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606477573329&di=8d91653b7d434a25f3b60a17bdd0c4ef&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn13%2F44%2Fw1080h564%2F20181110%2F9dc9-hnstwwq0951119.jpg',
-      grade: '大三',
-      school:'经济学院',
-      constellation:'水瓶座'
-    },
-    {
-      id: 3,
-      title: '朱一龙',
-      image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606488559236&di=f7da7432786fb0d8e35936aa09e13bd7&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn09%2F768%2Fw870h1498%2F20180911%2F8343-hiycyfw8352831.jpg',
-      grade: '大三',
-      school:'人文学院',
-      constellation:'射手座'
-    }
-  ],
+    userData:[],
     testCurrentNav: 0,
     currentIndex: 0,
     currentstu: {},
@@ -51,7 +18,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //this.getstuList();
+    this.getRandomUsers()
+
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -61,7 +29,7 @@ Page({
   },
   // 开始滑动
   onTouchStart(e) {
-    console.log(e)
+    // console.log(e)
 
     touch[0] = e.touches[0].clientX
   },
@@ -77,8 +45,8 @@ Page({
   addClassName(direction) {
     let currentIndex = this.data.currentIndex
     let currentstu = {}
-    let stuData = this.data.stuData
-    let length = stuData.length
+    let userData = this.data.userData
+    let length = userData.length
     let classArray = new Array(length)
 
     if (direction === 'left') {  // 向左滑动
@@ -101,7 +69,7 @@ Page({
 
     }
 
-    currentstu = stuData[currentIndex]
+    currentstu = userData[currentIndex]
     this.moveCard(direction)
 
     this.setData({
@@ -125,16 +93,71 @@ Page({
       stuDistance
     })
   },
-  /*
-  // 实现页面跳转
-  onTapNavigateTo(e) {
-    console.log(e)
-    let id = e.currentTarget.dataset.id
-    console.log(id, e)
 
-    wx.navigateTo({
-      url: '/pages/detail/detail?id=' + id,
-    })
+  getRandomArrayElements:function(arr, count) {
+    if(count>arr.length){
+      return;
+    }
+    let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+    while (i-- > min) {
+    index = Math.floor((i + 1) * Math.random());
+    temp = shuffled[index];
+    shuffled[index] = shuffled[i];
+    shuffled[i] = temp;
+    }
+    console.log(shuffled.slice(min))
+    return shuffled.slice(min);
+    },
+
+  getRandomUsers:function(){
+
+    const db = wx.cloud.database();
+    db.collection('users').orderBy('id','desc').limit(20).get().then(res =>{
+      // console.log(res.data)
+      var selectedUsers = this.getRandomArrayElements(res.data,8)
+      let users = [];
+      selectedUsers.forEach(element => {
+        let dic={};
+        dic.id = element.id?element.id:null;
+        dic.title=element.name?element.name:'无';
+        dic.image=element.photourl?element.photourl:'../../images/male.png';
+        dic.BriefItroduction=element.BriefItroduction?element.BriefItroduction:'无';
+        dic.tags=element.tags?element.tags:[];
+        users.push(dic)
+      });
+      // console.log(users)
+      this.setData({userData:users})
+    });
   },
-  */
+
+  viewProfile:function(e){
+    var userLookedID = e.currentTarget.dataset.name;
+    console.log(userLookedID)
+    var userid = wx.getStorageSync('id');//获取登录状态，也就是用户的id
+    wx.cloud.callFunction({
+      name:'update',
+      data:{
+        id:userLookedID,//用户对谁点了喜欢，这里就是谁的id
+        userid:userid
+      },success:res=>{
+        console.log(res)
+        wx.navigateTo({
+          url: '../homepage/homepage?id='+userLookedID
+        })
+      },fail:res=>{
+        console.log(res.errMsg)
+      }
+    })
+  }
+
+  // 实现页面跳转
+  // onTapNavigateTo(e) {
+  //   console.log(e)
+  //   let id = e.currentTarget.dataset.id
+  //   console.log(id, e)
+
+  //   wx.navigateTo({
+  //     url: '/pages/detail/detail?id=' + id,
+  //   })
+  // },
 })

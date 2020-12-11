@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "i-button": "../../style/iview/dist/button/index",
+    "i-input":"../../style/iview/dist/input/index",
+    "i-panel":"../../style/iview/dist/panel/index",
+    "i-card":"../../style/iview/dist/card/index",
+    "i-avatar":"../../style/iview/dist/avatar/index",
+    "i-grid": "../../style/iview/dist/grid/index",
+    "i-grid-item": "../../style/iview/dist/grid-item/index",
+    "i-grid-icon": "../../style/iview/dist/grid-icon/index",
+    "i-grid-label": "../../style/iview/dist/grid-label/index",
+    "i-tag": "../../style/iview/dist/tag/index",
+    "i-icon":"../../style/iview/dist/icon/index"
+  }
+}

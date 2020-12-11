@@ -12,11 +12,6 @@
     <view class='name'>
       <text class="user_name">{{name}}</text>
       <view class='briefintro'>{{brief_introduction}}</view>
-      <view class="toedit">
-        <navigator url="/pages/editinfo/editinfo">
-            <i-icon type="editor" size="28" color="#80848f"/>
-        </navigator>
-      </view>
     </view>
 
     <view  class='introduction'>
@@ -64,8 +59,8 @@
 
     <view class='looking'>
       <view class='passive'>
-        <i-card title="谁看过我">
-          <block wx:for="{{looked}}" wx:key="key">
+        <i-card title="谁看过ta">
+          <block wx:if="{{looked.length!=0}}" wx:for="{{looked}}" wx:key="key">
             <view class="item"  slot="content">
               <i-avatar class="avatar" src="/images/female.png" size="large"></i-avatar>
               <view class="intro">
@@ -78,8 +73,8 @@
         </i-card>
       </view>
       <view class='active'>
-        <i-card  title="我看过谁">
-          <block wx:for="{{looking}}" wx:key="key">
+        <i-card title="ta看过谁">
+          <block wx:if="{{looking.length!=0}}" wx:for="{{looking}}" wx:key="key">
             <view class="item"  slot="content">
               <i-avatar class="avatar" src="/images/male.png" size="large"></i-avatar>
               <view class="intro">

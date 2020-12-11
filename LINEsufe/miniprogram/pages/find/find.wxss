@@ -10,7 +10,7 @@
   left: 0;
   margin-top: 20rpx;
   padding: 0 100rpx;
-  color: #999;
+  color: black;
   height: 750rpx;
   width: calc(550rpx*15);
   display: flex;
@@ -68,7 +68,8 @@
   text-align: center;
   margin: 20rpx;
   line-height: 1;
-  color: #342158;
+  font-family: 'Times New Roman', Times, serif;
+  /* color: #342158; */
 }
 
 .stu-title {
@@ -84,10 +85,19 @@
 .stu-type {
   box-sizing: border-box;
   font-size: 30rpx;
-  color: rgba(52, 33, 88, 0.7);
+  /* color: rgba(52, 33, 88, 0.7); */
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
+
+.stu-tags{
+  box-sizing: border-box;
+  font-size: 26rpx;
+  /* color: rgba(52, 33, 88, 0.7); */
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
 .info{
   width: 60rpx;
   height: 60rpx;
@@ -122,7 +132,7 @@
   height: 150rpx;
   font-size: 25rpx;
   line-height: 2;
-  color: #342158;
+  color: black;
   -webkit-line-clamp: 3; /* 设置超出多少行隐藏 */
   -webkit-box-orient: vertical;
   overflow: hidden;
