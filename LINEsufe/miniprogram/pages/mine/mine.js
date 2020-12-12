@@ -5,6 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // src: '../../images/01.jpg',
+    // me:[
+    //   "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606652905943&di=818f54a0b8a03bf12ba9fc0afc848bb0&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170403%2Fa18953a64c4d43fa89b4c3b1a9e73df9_th.jpeg",
+    //   "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606652905036&di=c26dcaac3cd55ec1dd660ac95728131e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F03%2F20160803151703_cB2PL.jpeg",
+    //   "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606652905030&di=b013f17e138f6bc6b5e2b2ccec4aefda&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201508%2F29%2F20150829201719_PV3iQ.jpeg"
+    // ],
     name:'',
     brief_introduction:'',
     looked:[{}],
@@ -34,6 +40,9 @@ Page({
     var that = this;
     const db = wx.cloud.database();
     db.collection('users').where({id:userid}).get().then(res=>{
+      // wx.cloud.init({
+      //   traceUser: true
+      // })
       {var lookedid = res.data[0].looked;
       var lookingid = res.data[0].looking;
       var info = {id:0,name:'',brief:''};
@@ -44,7 +53,7 @@ Page({
         db.collection('users').where({id:id}).get().then(r=>{
           info['id'] = r.data[0].id;
           info['name'] = r.data[0].name;
-          info['brief'] = r.data[0].BriefIntroduction;
+          info['brief'] = r.data[0].BriefItroduction;
           dinfo.push(info);
           info = {id:0,name:'',brief:''};
         })
@@ -55,7 +64,7 @@ Page({
         db.collection('users').where({id:id}).get().then(s=>{
           info['id'] = s.data[0].id;
           info['name'] = s.data[0].name;
-          info['brief'] = s.data[0].BriefIntroduction;
+          info['brief'] = s.data[0].BriefItroduction;
           ginfo.push(info);
           info = {id:0,name:'',brief:''};
         })
@@ -78,6 +87,7 @@ Page({
           });
         }
       });
+      console.log(that.data);
     });
   },
   /**
@@ -86,71 +96,6 @@ Page({
   onLoad: function (options) {
     this.SetMydata();
   },
-
-  choose_uploadPhoto:function(){
-    var id = wx.getStorageSync('id');
-    wx.chooseImage({
-      success: choose_success => {
-       var path = choose_success.tempFilePaths[0];
-       var suffix = path.split('.')[path.split('.').length - 1];
-       wx.cloud.uploadFile({
-         cloudPath: `avatar/${id}.${suffix}`,
-         filePath: path,
-         success: res => {
-           this.setData({
-             "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
-           });
-           console.log(res.fileID);
-           wx.cloud.callFunction({
-             name: 'Update_pic_pho',//云函数名称为photoupload
-             data :
-              {
-                id:id,
-                data:res.fileID,
-                PicOrPho:false
-              },
-             success : res=>{
-               console.log("uploadphoto success")
-             }
-           })
-         }
-       })
-      },
-    })
-  },
-
-  choose_uploadPicture:function(){
-    var id = wx.getStorageSync('id');
-    wx.chooseImage({
-      success: choose_success => {
-       var path = choose_success.tempFilePaths[0];
-       var suffix = path.split('.')[path.split('.').length - 1];
-       wx.cloud.uploadFile({
-         cloudPath: `avatar/${id}.${suffix}`,
-         filePath: path,
-         success: res => {
-           this.setData({
-             "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
-           });
-           console.log(res.fileID);
-           wx.cloud.callFunction({
-             name: 'Update_pic_pho',//云函数名称为photoupload
-             data :
-              {
-                id:id,
-                data:res.fileID,
-                PicOrPho:true
-              },
-             success : res=>{
-               console.log("uploadphoto success")
-             }
-           })
-         }
-       })
-      },
-    })
-  },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -163,7 +108,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.SetMydata();
+
   },
 
   /**

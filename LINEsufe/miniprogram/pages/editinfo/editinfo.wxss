@@ -1,97 +1,45 @@
-/* pages/test/test.wxss */
 .page {
   width: 100%;
-  height: 100%;
-  background-color: #ffffff;
+  height: 700px;
+  background-color: white;
 }
-
+.graph{
+  margin-top: 20px;
+}
+.user_input_text{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: rgb(90, 122, 221);
+}
 .title{
   margin-top: 15px;
   text-align: center;
   font-size: 30px;
-  font-weight: bold;
   font-family: 'Arial Narrow Bold', sans-serif;
 }
-
-.form_bg{
-  margin-top: 20px;
+.collapse{
+  font-size: 24px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.form_item{
-  margin-top: 4%;
-  margin-bottom: 4%;
-  align-items: center;
-}
-
-.item_title{
-  font-size: 40rpx;
-  margin-left: 10%;
-  font-weight: bold;
-}
-
-.item_input{
-  width: 72%;
+.user-info {
+  /* font-size: 28px;
+  font-family: Georgia, 'Times New Roman', Times, serif; */
+  width: 50%;
   text-align: center;
-  height: 80rpx;
-  border: solid 1rpx;
-  margin-left: 14%;
-  margin-right: 14%;
-  margin-bottom: 4%;
-  margin-top: 4%;
-  font-size: 36rpx;
-  border-radius: 40rpx;
+  margin-bottom: 20px;
 }
-
-.rg{
-  display: flex;
-  justify-content: center;
-  font-size: 36rpx;
-  margin-top: 3%;
-  margin-bottom: 4%;
+.name {
+  font-size: 42rpx;
+  letter-spacing: 5rpx;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
 }
-
-.rman{
-  margin-right: 80rpx;
-}
-
-.tags_title{
-  display: flex;
-  justify-content: center;
-  font-size: small;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  color: grey;
-}
-
-.tags_input{
-  border: solid 1rpx;
-  border-radius: 40rpx;
-  height: 80rpx;
-  width: 66%;
-  margin-left: 17%;
-  margin-right: 17%;
+.subtitle{
+  font-size: 21px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
-  margin-top: 2%;
-  font-size: 32rpx;
-}
-
-.Textarea{
-  width: 84%;
-  border: solid 1rpx;
-  margin-left: 8%;
-  margin-right: 8%;
-  margin-top: 4%;
-  border-radius: 20rpx;
-  text-indent: 14rpx;
-  font-size: 32rpx;
-}
-
-.btn-area{
-  margin-top: 60rpx;
-  background-color: snow;
-}
-
-.btn{
-  margin: 30rpx;
-  height: 80rpx;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

@@ -145,7 +145,9 @@
   width: 130rpx;
   height: 130rpx;
   margin-top: 30rpx;
-  margin-left: 130rpx;
+  margin-left: 220rpx;
+  margin-right: 25rpx;
+  
 }
 
 .like {
@@ -153,12 +155,6 @@
   width: 130rpx;
   height: 130rpx;
   margin-top: 30rpx;
-  margin-left: 50rpx;
+  margin-left: 25rpx;
 }
-.refresh{
-  display: inline-block;
-  width: 130rpx;
-  height: 130rpx;
-  margin-top: 30rpx;
-  margin-left: 50rpx;
-}
+

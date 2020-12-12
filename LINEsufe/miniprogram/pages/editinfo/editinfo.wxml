@@ -1,49 +1,135 @@
-<!--pages/test/test.wxml-->
 <view class="page">
-  <view class="title">编辑个人资料</view>
 
-  <view class="form_bg">
-    <form class="form" bindsubmit="formSubmit" bindreset="formReset">
-      <view class="form_item">
-        <text class="item_title">昵称：</text>
-        <input placeholder="请在这里输入你的昵称(不超过10位)" maxlength="10" class="item_input" placeholder-class="center" name = "name" value="{{name}}"/>
-      </view>
+    <view class="title">编辑个人资料</view>
 
-      <view class="form_item">
-        <text class="item_title">性别：</text>
-        <radio-group class="rg" name = "sex">
-          <radio class="rman" checked="{{sex}}">男</radio>
-          <radio checked="{{!sex}}">女</radio>
-        </radio-group>
-      </view>
+    <view class="graph">
+        <i-steps current="{{currentStep}}">
+            <i-step>
+                <view slot="title">
+                    基础信息
+                </view>
+                <view slot="content">
+                    昵称、性别、学校、院系
+                </view>
+            </i-step>
+            <i-step>
+                <view slot="title">
+                    配对信息
+                </view>
+                <view slot="content">
+                    爱好、特长、标签
+                </view>
+            </i-step>
+            <i-step>
+                <view slot="title">
+                    详细信息
+                </view>
+                <view slot="content">
+                    个人介绍
+                </view>
+            </i-step>
+        </i-steps>
+    </view>
 
-      <view class="form_item">
-        <text class="item_title">标签：</text>
-        <view class="tags">
-          <text class="tags_title">每位用户最多拥有5个标签，每个标签长度不能超过10</text>
-          <input placeholder="标签1" maxlength="10" class="tags_input" name = "t1" value="{{tags[0]}}"/>
-          <input placeholder="标签2" maxlength="10" class="tags_input" name = "t2" value="{{tags[1]}}"/>
-          <input placeholder="标签3" maxlength="10" class="tags_input" name = "t3" value="{{tags[2]}}"/>
-          <input placeholder="标签4" maxlength="10" class="tags_input" name = "t4" value="{{tags[3]}}"/>
-          <input placeholder="标签5" maxlength="10" class="tags_input" name = "t5" value="{{tags[4]}}"/>
-        </view>
-      </view>
+    <view wx:if="{{currentStep == 0}}"> 
+        <view class="subtitle">基础信息</view>
+        <i-panel class="user-info"  > 
+        <i-collapse accordion>
+            <i-collapse-item
+                name="昵称"
+                i-class-title="collapse"
+                title="昵称">
+                <view slot="content">
+                    <i-input value="{{ nikeName }}" type="textarea" title="昵称" autofocus/>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    name="年龄"
+                    i-class-title="collapse"
+                    title="年龄">
+                <view slot="content">
+                    <i-input value="{{ age }}" type="textarea" title="年龄"/>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    name="性别"
+                    i-class-title="collapse"
+                    title="性别">
+                <view slot="content">
+                    <i-radio-group current="{{currentGender}}" bindchange="handleFruitChange">
+                        <i-radio key="1" value="男"></i-radio>
+                        <i-radio key="2" value="女"></i-radio>
+                        <i-radio key="3" value="先不展示"></i-radio>
+                    </i-radio-group>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    name="学历"
+                    i-class-title="collapse"
+                    title="学历">
+                <view slot="content">
+                    <i-radio-group current="{{currentED}}" bindchange="handleEDChange">
+                        <i-radio key="1" value="本科"></i-radio>
+                        <i-radio key="2" value="研究生"></i-radio>
+                        <i-radio key="3" value="博士生"></i-radio>
+                        <i-radio key="4" value="其他"></i-radio>
+                    </i-radio-group>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    name="学校"
+                    i-class-title="collapse"
+                    title="学校">
+                <view slot="content">
+                    <i-input value="{{ collegeName }}" type="textarea" title="大学名称"/>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    name="学院"
+                    i-class-title="collapse"
+                    title="学院">
+                <view slot="content">
+                    <i-input value="{{ schoolName }}" type="textarea" title="学院"/>
+                </view>
+            </i-collapse-item>
+        </i-collapse>
+    </i-panel>
+    
+    </view>
+    <view wx:if="{{currentStep == 1}}"> 
+        <view class="subtitle">配对信息</view>
+        <i-panel class="user-info" > 
+        <i-collapse>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="爱好特长">
+                <view slot="content">
+                    <i-input value="{{ hobby1 }}" type="textarea" title="爱好1" />
+                    <i-input value="{{ hobby2 }}" type="textarea" title="爱好2" />
+                    <i-input value="{{ hobby3 }}" type="textarea" title="爱好3" />
+                </view>
+            </i-collapse-item>
+            <i-collapse-item
+                    i-class-title="collapse"
+                    title="标签">
+                <view slot="content">
+                    <i-input value="{{ tag1 }}" type="textarea" title="标签1" />
+                    <i-input value="{{ tag2 }}" type="textarea" title="标签2" />
+                    <i-input value="{{ tag3 }}" type="textarea" title="标签3" />
+                </view>
+            </i-collapse-item>
+        </i-collapse>
+    </i-panel>
+    
+    </view>
+    <view wx:if="{{currentStep == 2}}"> 
+        <view class="subtitle">详细信息</view>
+        <i-panel class="user-info" > 
+            <i-input value="{{ selfIntro }}" type="textarea" title="自我介绍" maxlength="50"/>
+        </i-panel>
 
-      <view class="form_item">
-        <text class="item_title">个人简介：</text>
-        <textarea placeholder="请在这里输入你的个人简介(不超过50字)" maxlength="50" class="Textarea"  name = "BI" value="{{BI}}"/>
-      </view>
-
-      <view class="form_item">
-        <text class="item_title">自我介绍：</text>
-        <textarea placeholder="请在这里输入你的自我介绍(不超过400字)" maxlength="400" class="Textarea"  name = "SI" value="{{SI}}"/>
-      </view>
-
-      <view class="btn-area">
-        <button form-type="submit" type="primary" class="btn" hover-class="btn-hover">提交</button>
-      </view>
-
-    </form>
-  </view>
+    </view>
+    <button bindtap="handleClick" class='user_input_text'>
+        <i-icon type="enter" size="28" color="white"/>
+    </button>
 </view>
-

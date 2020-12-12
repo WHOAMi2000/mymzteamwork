@@ -2,9 +2,11 @@
   "pages":[
     "pages/login/login",
     "pages/find/find",
-    "pages/friends/friends",
+    
+    
     "pages/mine/mine",
     "pages/questionary/questionary",
+    "pages/friends/friends",
     "pages/register/register",
     "pages/chat/chat",
     "pages/infodetails/infodetails"
