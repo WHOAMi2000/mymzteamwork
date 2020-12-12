@@ -89,20 +89,24 @@ Page({
 
   choose_uploadPhoto:function(){
     var id = wx.getStorageSync('id');
+    var that = this;
     wx.chooseImage({
       success: choose_success => {
        var path = choose_success.tempFilePaths[0];
        var suffix = path.split('.')[path.split('.').length - 1];
+       var photourl='';
+       var time = Math.random().toString();
        wx.cloud.uploadFile({
-         cloudPath: `avatar/${id}.${suffix}`,
+         cloudPath: `avatar/${id}.${suffix}_${time}`,
          filePath: path,
          success: res => {
            this.setData({
              "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
            });
+           photourl = res.fileID;
            console.log(res.fileID);
            wx.cloud.callFunction({
-             name: 'Update_pic_pho',//云函数名称为photoupload
+             name: 'Update_picpho',//云函数名称为photoupload
              data :
               {
                 id:id,
@@ -110,7 +114,10 @@ Page({
                 PicOrPho:false
               },
              success : res=>{
-               console.log("uploadphoto success")
+               console.log("uploadphoto success");
+               that.setData({
+                 photos:photourl
+               })
              }
            })
          }
@@ -121,33 +128,39 @@ Page({
 
   choose_uploadPicture:function(){
     var id = wx.getStorageSync('id');
-    wx.chooseImage({
-      success: choose_success => {
-       var path = choose_success.tempFilePaths[0];
-       var suffix = path.split('.')[path.split('.').length - 1];
-       wx.cloud.uploadFile({
-         cloudPath: `avatar/${id}.${suffix}`,
-         filePath: path,
-         success: res => {
-           this.setData({
-             "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
-           });
-           console.log(res.fileID);
-           wx.cloud.callFunction({
-             name: 'Update_pic_pho',//云函数名称为photoupload
-             data :
-              {
-                id:id,
-                data:res.fileID,
-                PicOrPho:true
-              },
-             success : res=>{
-               console.log("uploadphoto success")
-             }
-           })
-         }
-       })
-      },
+    const db = wx.cloud.database();
+    db.collection('users').where({id:id}).get().then(res=>{
+      var len = res.data[0].picurl.length + 1;
+      wx.chooseImage({
+        success: choose_success => {
+         var path = choose_success.tempFilePaths[0];
+         var suffix = path.split('.')[path.split('.').length - 1];
+         wx.cloud.uploadFile({
+           cloudPath: `${id}_pic${len}.${suffix}`,
+           filePath: path,
+           success: res => {
+             this.setData({
+               "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
+             });
+             console.log(res.fileID);
+             wx.cloud.callFunction({
+               name: 'Update_picpho',//云函数名称为photoupload
+               data :
+                {
+                  id:id,
+                  data:res.fileID,
+                  PicOrPho:true
+                },
+               success : res=>{
+                 console.log("uploadphoto success")
+                 this.onLoad();
+               }
+             })
+           }
+         })
+        },
+      })
+    
     })
   },
 

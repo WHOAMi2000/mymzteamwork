@@ -1,8 +1,15 @@
 
+.wholepage{
+  height: 100vh;
+}
+.page_ft{
+  height: 15%;
+  margin-top: 4%;
+}
 .stu-list-wrapper {
-  margin-top: 40rpx;
+  margin-top: 4%;
   width: 550rpx;
-  height: 850rpx;
+  height: 75%;
 }
 
 .stu-list{
@@ -11,7 +18,7 @@
   margin-top: 20rpx;
   padding: 0 100rpx;
   color: black;
-  height: 750rpx;
+  height: 75vh;
   width: calc(550rpx*15);
   display: flex;
   justify-content: flex-start;
@@ -41,6 +48,7 @@
 .active {
   transform: scale(1) translateY(0) translateX(0);
   opacity: 1;
+  height: 100%;
 }
 
 .next, .prev {

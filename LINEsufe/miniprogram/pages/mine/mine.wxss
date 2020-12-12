@@ -15,6 +15,14 @@
 .introduction_title{
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 10px;
+  display: flex;
+}
+.pic_title{
+  margin-top: 11rpx;
+}
+.arrow{
+  margin-left: 73%;
+  margin-top: 11rpx;
 }
 p{
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -55,8 +63,11 @@ p{
   margin: 20rpx;
   line-height: 1;
   color: #495060;
+  font-size: 36rpx;
 }
-
+.quote{
+  margin: 10rpx;
+}
 .user_name {
   font-weight: bold;
   font-size: larger;
@@ -95,15 +106,13 @@ p{
   text-align: center;
   margin-top: 15px;
   border-bottom: grey solid 1px;
-  height: 100rpx;
+  height: 130rpx;
 }
 .intro{
   height: 10rpx;
   margin-bottom: 10px;
 }
-.name{
-  font-size: 18px;
-}
+
 .academy{
   font-size: 14px;
   font-family: Georgia, 'Times New Roman', Times, serif;
