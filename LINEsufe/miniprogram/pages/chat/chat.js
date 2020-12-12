@@ -157,6 +157,12 @@ Page({
 
   },
 
+  ypage: function(){
+    wx.redirectTo({
+      url: '../homepage/homepage?id='+idYou
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -305,7 +311,7 @@ Page({
     wx.showNavigationBarLoading();
     
     let old_data = Message;
-    let x = msgList.length;console.log("x的数量为",x);
+    let x = msgList.length;//console.log("x的数量为",x);
     db.collection('Chatting').where({
       id:idsmall,
       id2:idlarge
@@ -316,7 +322,7 @@ Page({
       // 利用concat函数连接新数据与旧数据
       // 并更新emial_nums  
       Message = old_data+res.data.reverse();
-      x = Message.length;console.log("返回的数量为",res.data.length);
+      x = Message.length;//console.log("返回的数量为",res.data.length);
       
       for(var i = res.data.length-1; i >= 0 ; i--){
         var temp = '';

@@ -1,5 +1,6 @@
 // pages/friends/friends.js
 const db = wx.cloud.database()
+var record = 0;
 
 Page({
 
@@ -12,7 +13,7 @@ Page({
   },
 
   getfriends:function(){
-        //wx.setStorageSync('id', 10001);
+        wx.setStorageSync('id', 10001);
     var userid = wx.getStorageSync('id');//获取用户id
         var friends = [];
         db.collection('users').where({id:userid}).get().then(res=>{
@@ -63,6 +64,57 @@ Page({
             });
           }
         });
+    var that = this;
+    db.collection('Chatting').orderBy('time','desc').limit(1)
+    .where({
+      id: userid
+    }).watch({
+      onChange: function(res) {
+        console.log('success');
+        if(record != 0){
+          var friends = that.data.friendlist;
+          for(var i = 0; i < friends.length; i++){
+            console.log(res);
+            if(friends[i].id.toString() == res.docChanges[0].doc.id2){
+              friends[i].message = res.docChanges[0].doc.text;
+              friends[i].time = res.docChanges[0].doc.time;
+            }
+          }
+          that.setData({
+            friendlist: friends
+          })
+          record++;
+        }
+      },
+      onError: function(err) {
+        
+      }
+    })
+    db.collection('Chatting').orderBy('time','desc').limit(1)
+    .where({
+      id2: userid
+    }).watch({
+      onChange: function(res) {
+        console.log('success');
+        if(record != 0){
+          var friends = that.data.friendlist;
+          for(var i = 0; i < friends.length; i++){
+            console.log(res);
+            if(friends[i].id.toString() == res.docChanges[0].doc.id){
+              friends[i].message = res.docChanges[0].doc.text;
+              friends[i].time = res.docChanges[0].doc.time;
+            }
+          }
+          that.setData({
+            friendlist: friends
+          })
+          record++;
+        }
+      },
+      onError: function(err) {
+        
+      }
+    })
   },
 
 
@@ -99,21 +151,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.onLoad()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**

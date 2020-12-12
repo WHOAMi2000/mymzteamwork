@@ -1,24 +1,26 @@
 <view class='stu-list-wrapper'>
   <view x-scroll='false' class="stu-list" style='transform: translateX( {{stuDistance}}rpx)' bindtouchstart="onTouchStart" bindtouchend="onTouchEnd">
-
     <view class="nav-item {{classArray[index] ? classArray[index] : ''}}" wx:for="{{userData}}" data-index="{{index}}" wx:key="key">
       <image class='stu-image' src='{{item.image}}' mode='aspectFill'></image>
       <view class='stu-info'>
         <view class='stu-title'>{{item.title}}</view>
-        <view class='stu-type'>{{item.BriefItroduction}}</view>
+        <view class='stu-type'>{{item.BriefIntroduction}}</view>
         <view class='stu-tags'>{{item.tags}}</view>
         <!-- <navigator class="" url="/pages/infodetails/infodetails"> -->
             <image data-name="{{item.id}}" class="info" src="/images/info.png" mode="aspectFill" bindtap="viewProfile"></image>
         <!-- </navigator> -->
+        
       </view>
     </view>
   </view>
 </view>
 
 
-<view class="page_ft">
-      <image class="notlike" src="/images/nlove1.png" bindtap="notlike"></image>
-      <image class="like" src="/images/love1.png" bindtap="like"></image>
+<view class="page_ft" >
+  
+    <image class="notlike {{left?'active':''}}" src="/images/nlove1.png" bindtap="notlike"></image>
+    <image class="like" src="/images/love1.png" bindtap="like" ></image>
+    <image class="refresh" src="/images/refresh.png" bindtap="refresh" ></image>
 </view>
 
 

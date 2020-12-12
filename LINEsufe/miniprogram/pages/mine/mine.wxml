@@ -5,7 +5,7 @@
   <view class='percontent'>
     <view class='photo'>
         <view class="image">
-          <image class="avater"  mode="aspectFill" src="{{photos}}"></image>
+          <image class="avater"  mode="aspectFill" src="{{photos}}"  bindtap="choose_uploadPhoto"></image>
         </view>
     </view>
     
@@ -29,7 +29,7 @@
 
   <view class="introduction">
     <view class='introduction_title' bindtap="changeintroduction">
-      <i-icon type="picture" size="28" color="#80848f"/>照片
+      <i-icon type="picture" size="28" color="#80848f" bindtap="choose_uploadPicture"/>照片
     </view>
     <view class='percontent'>
       <view class='photo'>
