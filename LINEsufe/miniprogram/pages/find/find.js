@@ -133,23 +133,33 @@ Page({
   viewProfile:function(e){
     var userLookedID = e.currentTarget.dataset.name;
     console.log(userLookedID)
-    var userid = wx.getStorageSync('id');//获取登录状态，也就是用户的id
+    wx.navigateTo({
+      url: '../homepage/homepage?id='+userLookedID
+    })
+  },
+
+  notlike:function(e){
+    //TODO:刷新掉现在的人
+  },
+
+  like:function(e){
+    var userLookedID = this.data.userData[this.data.currentIndex].id;
+    var userid = wx.getStorageSync('id');
+    console.log(userLookedID);
+    console.log(userid);
     wx.cloud.callFunction({
       name:'update',
       data:{
         id:userLookedID,//用户对谁点了喜欢，这里就是谁的id
         userid:userid
       },success:res=>{
-        console.log(res)
-        wx.navigateTo({
-          url: '../homepage/homepage?id='+userLookedID
-        })
+        console.log('success')
       },fail:res=>{
         console.log(res.errMsg)
       }
     })
+    //TODO:刷新掉现在的人
   }
-
   // 实现页面跳转
   // onTapNavigateTo(e) {
   //   console.log(e)

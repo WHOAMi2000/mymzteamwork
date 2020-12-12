@@ -17,8 +17,8 @@
 
 
 <view class="page_ft">
-      <image class="notlike" src="/images/nlove1.png"></image>
-      <image class="like" src="/images/love1.png"></image>
+      <image class="notlike" src="/images/nlove1.png" bindtap="notlike"></image>
+      <image class="like" src="/images/love1.png" bindtap="like"></image>
 </view>
 
 

@@ -36,7 +36,6 @@ Page({
     },
 
   SetMydata:function() {
-    wx.setStorageSync('id', 10002);
     var userid = wx.getStorageSync('id');//获取用户id
     var that = this;
     const db = wx.cloud.database();
