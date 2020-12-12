@@ -35,7 +35,7 @@
 
   <!-- 输入框 -->
   <view class="sendmessage" style='bottom:{{inputBottom}}'>
-    <input type="text" style='{{focus?"border-bottom: 1px solid #88DD4B;":""}}' adjust-position='{{false}}' cursor-spacing='5' bindinput="bindKeyInput" value='{{inputVal}}' focus='{{focus}}' bindblur='no_focus' bindfocus="focus" confirm-type="done" placeholder=""/>
+    <input type="text" style='{{focus?"border-bottom: 1px solid #88DD4B;":""}}' adjust-position='{{false}}' cursor-spacing='5' bindinput="bindKeyInput" value='{{inputVal}}' focus='{{focus}}' bindblur='no_focus' bindfocus="focus" confirm-type="send" bindconfirm="subto" placeholder=""/>
     <button bindtap="submitTo" class='user_input_text'>
       <view>发送</view>
     </button>

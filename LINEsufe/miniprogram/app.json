@@ -1,13 +1,16 @@
 {
   "pages":[
-    "pages/login/login",
     "pages/find/find",
-    "pages/friends/friends",
+    "pages/login/login",
     "pages/mine/mine",
+    "pages/editinfo/editinfo",
+    
+    "pages/friends/friends",
     "pages/questionary/questionary",
     "pages/register/register",
     "pages/chat/chat",
-    "pages/infodetails/infodetails"
+    "pages/infodetails/infodetails",
+    "pages/homepage/homepage"
   ],
   "window":{
     "backgroundTextStyle":"light",

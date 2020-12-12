@@ -90,6 +90,46 @@ Page({
     inputVal = e.detail.value;
   },
 
+  subto:function(){
+    if(inputVal != null)
+    {
+      var time = formatTime ( new Date ()); 
+      
+      db.collection('Chatting').add({
+        data: {
+          direction: thisdirection,
+          id: idsmall,
+          id2: idlarge,
+          text: inputVal,
+          time: time
+        },
+        success: res => {
+          // 在返回结果中会包含新创建的记录的 _id
+          
+        },
+        fail: err => {
+          
+        }
+      })
+      msgList.push({
+        speaker: 'me',
+        contentType: 'text',
+        content: inputVal
+      })
+      this.setData({
+        msgList,
+        toView: 'msg-' + (msgList.length - 1)
+      })
+      inputVal = '';
+      
+      this.setData({
+        inputVal,
+        focus: true
+      })
+      
+    }
+  },
+
   submitTo:function(){
     if(inputVal != null)
     {

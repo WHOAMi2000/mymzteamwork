@@ -31,6 +31,8 @@ p{
   width: 300rpx;
   height: 300rpx;
   border-radius: 300rpx;
+  border-style:dashed;
+	border-width:1rpx;
   float: center;
 }
 .pic{
