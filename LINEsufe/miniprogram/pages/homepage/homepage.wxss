@@ -10,6 +10,7 @@
 }
 .cards{
   margin-bottom: 20px;
+  width: 90%;
 }
 .introduction_title{
   font-family: Georgia, 'Times New Roman', Times, serif;

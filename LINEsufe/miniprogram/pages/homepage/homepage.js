@@ -33,13 +33,14 @@ Page({
     // var userid = wx.getStorageSync('id');//获取用户id
     // console.log(userid)
     var that = this;
+    console.log(userid)
     const db = wx.cloud.database();
     db.collection('users').where({id:parseInt(userid)}).get().then(res=>{
       console.log(res)
 
       that.setData({
         name:res.data[0].name,
-        brief_introduction:res.data[0].BriefItroduction,
+        brief_introduction:res.data[0].BriefIntroduction,
         tags:res.data[0].tags,
         photos:res.data[0].photourl,
         self_introduction:res.data[0].SelfIntroduction,
@@ -57,7 +58,7 @@ Page({
         db.collection('users').where({id:temp_id}).get().then(r=>{
           info['id'] = r.data[0].id;
           info['name'] = r.data[0].name;
-          info['brief'] = r.data[0].BriefItroduction;
+          info['brief'] = r.data[0].BriefIntroduction;
           dinfo.push(info);
           dinfo = this.unique(dinfo)
           // console.log(dinfo)
@@ -70,7 +71,7 @@ Page({
         db.collection('users').where({id:id}).get().then(s=>{
           info['id'] = s.data[0].id;
           info['name'] = s.data[0].name;
-          info['brief'] = s.data[0].BriefItroduction;
+          info['brief'] = s.data[0].BriefIntroduction;
           ginfo.push(info);
           ginfo = this.unique(ginfo)
           that.setData({looking:ginfo})
@@ -85,7 +86,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options.id)
+     console.log(options.id)
     this.SetMydata(options.id);
   },
 

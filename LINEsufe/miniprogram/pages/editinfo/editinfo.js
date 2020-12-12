@@ -1,102 +1,62 @@
-// pages/editinfo/editinfo.js
+// pages/test/test.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data : {
-    currentStep : 0,
-    collegeName : '' ,
-    schoolName : '' ,
-    nikeName : '',
-    age: '',
-    currentGender: '男',
-    position: 'left',
-    currentED:'本科',
-    tag1:'',
-    tag2:'',
-    tag3:'',
-    hobby1:'',
-    hobby2:'',
-    hobby3:'',
+  data: {
+    name:'',
+    sex:true,
+    BI:'',
+    SI:'',
+    tags:[]
   },
-  changeName (e) {
-    console.log(e)
-    this.setData({
-        'value1' : e.detail.detail.value
-    })
-},
-  handleClick () {
-      const addCurrent = this.data.currentStep + 1;
-      const currentStep = addCurrent > 2 ? 0 : addCurrent;
-      this.setData({
-          'currentStep' : currentStep
-      })
-  },
-  handleFruitChange({ detail = {} }) {
-    this.setData({
-        currentGender: detail.value
-    });
-},
-handleEDChange({ detail = {} }) {
-  this.setData({
-    currentED: detail.value
-  });
-},
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    const db = wx.cloud.database();
+    var id = wx.getStorageSync('id');
+    var that =this;
+    db.collection('users').where({id:id}).get().then(res=>{
+      console.log(res.data[0].BriefItroduction);
+      var tags = res.data[0].tags;
+      if(tags.length < 5){
+        for(var i=0;i<(5-tags.length+1);i++){
+          tags.push("无标签")
+        }
+      }
+      that.setData({
+        name:res.data[0].name?res.data[0].name:null,
+        sex:res.data[0].sex,
+        BI:res.data[0].BriefIntroduction?res.data[0].BriefIntroduction:null,
+        SI:res.data[0].SelfIntroduction?res.data[0].SelfIntroduction:null,
+        tags:res.data[0].tags
+      })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
+
+  formSubmit: function(e) {
+    var id = wx.getStorageSync('id');
+    var tags = [];
+    if(e.detail.value.t1 != "无标签") tags.push(e.detail.value.t1);
+    if(e.detail.value.t2 != "无标签") tags.push(e.detail.value.t2);
+    if(e.detail.value.t3 != "无标签") tags.push(e.detail.value.t3);
+    if(e.detail.value.t4 != "无标签") tags.push(e.detail.value.t4);
+    if(e.detail.value.t5 != "无标签") tags.push(e.detail.value.t5);
+    wx.cloud.callFunction({
+      name: 'updateinfo',
+      data:{
+        id: id,
+        name:e.detail.value.name,
+        BI:e.detail.value.BI,
+        tags:tags,
+        SI:e.detail.value.SI
+      },
+      success: res => {
+        console.log("success");
+        wx.switchTab({
+          url: '../../pages/mine/mine',
+        })
+      }
+    });
+    
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

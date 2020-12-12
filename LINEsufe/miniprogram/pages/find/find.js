@@ -14,13 +14,23 @@ Page({
     classArray: ['active', 'next'], // 定义class数组，存放样式class，
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getRandomUsers()
-
+    this.getrandomusers();
+    
   },
+
+  refresh: function(options){
+    this.getrandomusers();
+    this.addClassName('right');
+    this.addClassName('right');
+    this.addClassName('right');
+    this.addClassName('right');
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -93,42 +103,71 @@ Page({
       stuDistance
     })
   },
-
-  getRandomArrayElements:function(arr, count) {
-    if(count>arr.length){
-      return;
-    }
-    let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
-    while (i-- > min) {
-    index = Math.floor((i + 1) * Math.random());
-    temp = shuffled[index];
-    shuffled[index] = shuffled[i];
-    shuffled[i] = temp;
-    }
-    console.log(shuffled.slice(min))
-    return shuffled.slice(min);
-    },
-
-  getRandomUsers:function(){
-
+  getrandomusers:function(){
     const db = wx.cloud.database();
-    db.collection('users').orderBy('id','desc').limit(20).get().then(res =>{
-      // console.log(res.data)
-      var selectedUsers = this.getRandomArrayElements(res.data,8)
-      let users = [];
-      selectedUsers.forEach(element => {
-        let dic={};
-        dic.id = element.id?element.id:null;
-        dic.title=element.name?element.name:'无';
-        dic.image=element.photourl?element.photourl:'../../images/male.png';
-        dic.BriefItroduction=element.BriefItroduction?element.BriefItroduction:'无';
-        dic.tags=element.tags?element.tags:[];
-        users.push(dic)
+    var id = wx.getStorageSync('id');
+    var num = 5;
+    var users = [];
+    db.collection('users').where({id:id}).get().then(res=>{
+      var looking = res.data[0].looking;
+      var friends = res.data[0].friends;
+      var u = [];
+      var lastid = 0;
+      var grap = 0;
+      db.collection('users').orderBy('id','desc').limit(1).get().then(lastid_res =>{
+        {lastid = lastid_res.data[0].id;
+        grap = lastid - 10001 + 0.9;
+        var thisid = 0;
+        var count = 0;
+        for (var i = 1; i; i++) {
+          thisid = Math.floor(Math.random()*grap) + 10001;
+          if(thisid == id) continue;
+          var j = 0;
+          for(j=0;j<count;j++){
+            if(u[j] == thisid) break;
+          }
+          for(var k=0;k<looking.length;k++){
+            if(looking[k] == thisid){
+              j = 0;
+              break;
+            }
+          }
+          for(var k=0;k<friends.length;k++){
+            if(friends[k] == thisid){
+              j = 0;
+              break;
+            }
+          }
+          
+          if(j == count){
+            u.push(thisid);
+            count = count + 1;
+            db.collection('users').where({id:thisid}).get().then(people_res=>{
+              var info = {};
+              info.id = people_res.data[0].id?people_res.data[0].id:null;
+              info.title=people_res.data[0].name?people_res.data[0].name:'无';
+              info.image=people_res.data[0].photourl?people_res.data[0].photourl:'../../images/male.png';
+              info.BriefIntroduction=people_res.data[0].BriefIntroduction?people_res.data[0].BriefIntroduction:'无';
+              info.tags=people_res.data[0].tags?people_res.data[0].tags:[];
+              users.push(info);
+              this.setData({
+                userData:users
+              })
+            });
+          } 
+          if(count >= num) break;
+          if(i>30) break;
+        }
+      
+      }
       });
-      // console.log(users)
-      this.setData({userData:users})
     });
+    
   },
+
+
+  
+ 
 
   viewProfile:function(e){
     var userLookedID = e.currentTarget.dataset.name;
@@ -140,10 +179,12 @@ Page({
 
   notlike:function(e){
     //TODO:刷新掉现在的人
+    this.addClassName('left');
   },
 
   like:function(e){
     var userLookedID = this.data.userData[this.data.currentIndex].id;
+    
     var userid = wx.getStorageSync('id');
     console.log(userLookedID);
     console.log(userid);
@@ -153,13 +194,28 @@ Page({
         id:userLookedID,//用户对谁点了喜欢，这里就是谁的id
         userid:userid
       },success:res=>{
+        wx.showModal({
+          content: '已经把你加到喜欢他（她）的人了',
+          duration:3000
+        })
         console.log('success')
       },fail:res=>{
         console.log(res.errMsg)
       }
     })
     //TODO:刷新掉现在的人
-  }
+    this.addClassName('left');
+  },
+
+  onShow:function(){
+  //   var a = this.data.userData;
+  //   this.setData({
+  //     userData:a
+  //   });
+  },
+})
+
+
   // 实现页面跳转
   // onTapNavigateTo(e) {
   //   console.log(e)
@@ -170,4 +226,3 @@ Page({
   //     url: '/pages/detail/detail?id=' + id,
   //   })
   // },
-})
