@@ -7,10 +7,7 @@
           <view class='stu-title'>{{item.title}}</view>
           <view class='stu-type'>{{item.BriefIntroduction}}</view>
           <view class='stu-tags'>{{item.tags}}</view>
-          <!-- <navigator class="" url="/pages/infodetails/infodetails"> -->
-              <image data-name="{{item.id}}" class="info" src="/images/info.png" mode="aspectFill" bindtap="viewProfile"></image>
-          <!-- </navigator> -->
-          
+          <image data-name="{{item.id}}" class="info" src="/images/info.png" mode="aspectFill" bindtap="viewProfile"></image>
         </view>
       </view>
     </view>
