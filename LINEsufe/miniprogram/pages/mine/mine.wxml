@@ -12,10 +12,10 @@
     <view class='name'>
       <view class="tm">
         <text class="user_name">{{name}}</text>
-        <view class="sexchange" wx:if="{{sex == true}}">
+        <view class="sexchange" wx:if="{{sex}}">
           <image class="seximage"src="../../images/boy.png" mode="aspectFill"></image>
         </view>
-        <view class="sexchange" wx:if="{{sex == false}}">
+        <view class="sexchange" wx:if="{{!sex}}">
           <image class="seximage"src="../../images/girl.png" mode="aspectFill"></image>
         </view>
       </view>

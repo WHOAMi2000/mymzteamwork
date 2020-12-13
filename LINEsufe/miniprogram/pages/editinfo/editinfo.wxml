@@ -12,8 +12,8 @@
       <view class="form_item">
         <text class="item_title">性别：</text>
         <radio-group class="rg" name = "sex">
-          <radio class="rman" checked="{{sex}}">男</radio>
-          <radio checked="{{!sex}}">女</radio>
+          <radio class="rman" checked="{{sex}}" value="男">男</radio>
+          <radio checked="{{!sex}}"  value="女">女</radio>
         </radio-group>
       </view>
 

@@ -41,6 +41,10 @@ Page({
     if(e.detail.value.t3 != "无标签" && e.detail.value.t3 != '' ) tags.push(e.detail.value.t3);
     if(e.detail.value.t4 != "无标签" && e.detail.value.t4 != '' ) tags.push(e.detail.value.t4);
     if(e.detail.value.t5 != "无标签" && e.detail.value.t5 != '' ) tags.push(e.detail.value.t5);
+    
+    var sex = true;
+    if(e.detail.value.sex == '女') sex = false;
+    console.log(sex);
     wx.cloud.callFunction({
       name: 'updateinfo',
       data:{
@@ -48,7 +52,8 @@ Page({
         name:e.detail.value.name,
         BI:e.detail.value.BI,
         tags:tags,
-        SI:e.detail.value.SI
+        SI:e.detail.value.SI,
+        sex:sex
       },
       success: res => {
         console.log("success");

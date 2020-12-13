@@ -1,6 +1,6 @@
 /* @import "../../weui.wxss"; */
 page {
-  background-color: #fff;
+  background-color: snow;
   
 }
 .content {

@@ -1,12 +1,12 @@
 {
   "pages":[
-    "pages/mine/mine",
+    "pages/find/find",
     "pages/login/login",
     "pages/register/register",
-    
-    "pages/find/find",
-    "pages/editinfo/editinfo",
     "pages/friends/friends",
+    "pages/mine/mine",
+    
+    "pages/editinfo/editinfo",
     "pages/questionary/questionary",
     "pages/chat/chat",
     "pages/infodetails/infodetails",

@@ -70,7 +70,7 @@ Page({
               looked:[],
               looking:[],
               name:'未命名游客' + Math.random().toString(),
-              photourl:'../../images/timg.jpg',
+              photourl:'../../images/txx.png',
               picurl:[],
               sex:true,
               tags:['一个很懒的人']
