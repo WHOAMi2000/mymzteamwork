@@ -111,6 +111,7 @@ Page({
     db.collection('users').where({id:id}).get().then(res=>{
       var looking = res.data[0].looking;
       var friends = res.data[0].friends;
+
       var u = [];
       var lastid = 0;
       var grap = 0;
@@ -120,26 +121,30 @@ Page({
         var thisid = 0;
         var count = 0;
         for (var i = 1; i; i++) {
+          var bol = true;
           thisid = Math.floor(Math.random()*grap) + 10001;
           if(thisid == id) continue;
           var j = 0;
           for(j=0;j<count;j++){
-            if(u[j] == thisid) break;
+            if(u[j] == thisid){
+              bol = false;
+              break;
+            } 
           }
           for(var k=0;k<looking.length;k++){
             if(looking[k] == thisid){
-              j = 0;
+              bol = false;
               break;
             }
           }
           for(var k=0;k<friends.length;k++){
             if(friends[k] == thisid){
-              j = 0;
+              bol = false;
               break;
             }
           }
           
-          if(j == count){
+          if(bol){
             u.push(thisid);
             count = count + 1;
             db.collection('users').where({id:thisid}).get().then(people_res=>{
@@ -156,7 +161,7 @@ Page({
             });
           } 
           if(count >= num) break;
-          if(i>30) break;
+          if(i>50) break;
         }
       
       }
@@ -184,10 +189,8 @@ Page({
 
   like:function(e){
     var userLookedID = this.data.userData[this.data.currentIndex].id;
-    
+    var page = this;
     var userid = wx.getStorageSync('id');
-    console.log(userLookedID);
-    console.log(userid);
     wx.cloud.callFunction({
       name:'update',
       data:{
@@ -199,6 +202,11 @@ Page({
           duration:3000
         })
         console.log('success')
+        page.getrandomusers();
+        page.addClassName('right');
+        page.addClassName('right');
+        page.addClassName('right');
+        page.addClassName('right');
       },fail:res=>{
         console.log(res.errMsg)
       }

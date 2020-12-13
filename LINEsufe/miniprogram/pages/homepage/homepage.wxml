@@ -10,7 +10,15 @@
     </view>
     
     <view class='name'>
-      <text class="user_name">{{name}}</text>
+      <view class="tm">
+        <text class="user_name">{{name}}</text>
+        <view class="sexchange" wx:if="{{sex == true}}">
+          <image class="seximage"src="../../images/boy.png" mode="aspectFill"></image>
+        </view>
+        <view class="sexchange" wx:if="{{sex == false}}">
+          <image class="seximage"src="../../images/girl.png" mode="aspectFill"></image>
+        </view>
+      </view>
       <view class='briefintro'>{{brief_introduction}}</view>
     </view>
 

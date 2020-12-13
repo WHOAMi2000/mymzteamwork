@@ -45,7 +45,8 @@ function initData(that) {
     msgList.push({
       speaker: temp,
       contentType: 'text',
-      content: Message[i].text
+      content: Message[i].text,
+      time: Message[i].time
     })
   }
 
@@ -114,7 +115,8 @@ Page({
       msgList.push({
         speaker: 'me',
         contentType: 'text',
-        content: inputVal
+        content: inputVal,
+        time: time
       })
       this.setData({
         msgList,
@@ -154,7 +156,8 @@ Page({
       msgList.push({
         speaker: 'me',
         contentType: 'text',
-        content: inputVal
+        content: inputVal,
+        time: time
       })
       this.setData({
         msgList,
@@ -280,13 +283,22 @@ Page({
    */
   onShow: function (options) {
     var that = this;
-    db.collection('Chatting').orderBy('time','desc').limit(1)
+    this.watcher = db.collection('Chatting').orderBy('time','desc').limit(1)
       .where({
         id: idsmall,
         id2: idlarge,
       }).watch({
         onChange: function(res) {
-          if(record != 0 && res.docChanges[0].doc.direction != thisdirection){
+          var flag = 0;
+          for(var i = msgList.length-1; i>=0; i--){
+            if(msgList[i].speaker == 'you'){
+              if(msgList[i].time == res.docChanges[0].doc.time){
+                flag = 1;
+              }
+              break;
+            }
+          }
+          if(record != 0 && res.docChanges[0].doc.direction != thisdirection && flag == 0){
             console.log('docs\'s changed events', ( res.docChanges[0].doc.text))
             Message.push({
               text: res.docChanges[0].doc.text
@@ -294,7 +306,8 @@ Page({
             msgList.push({
               speaker: 'you',
               contentType: 'text',
-              content: res.docChanges[0].doc.text
+              content: res.docChanges[0].doc.text,
+              time: res.docChanges[0].doc.time
             })
             that.setData({
               msgList
@@ -324,6 +337,7 @@ Page({
     inputVal = "";
     Message = [];
     record = 0;
+    this.watcher.close();
   },
 
   /**
@@ -342,6 +356,7 @@ Page({
     inputVal = "";
     Message = [];
     record = 0;
+    this.watcher.close();
   },
 
   /**
@@ -375,7 +390,8 @@ Page({
         msgList.unshift({
           speaker: temp,
           contentType: 'text',
-          content: res.data[i].text
+          content: res.data[i].text,
+          time: res.data[i].time
         })
       }
       
@@ -425,5 +441,6 @@ Page({
     inputVal = "";
     Message = [];
     record = 0;
+    this.watcher.close();
   }
 })
