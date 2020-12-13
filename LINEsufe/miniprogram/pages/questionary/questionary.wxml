@@ -2,9 +2,9 @@
 <view class='container'>
  
 
- <swiper class='sheet' current='{{id}}' bindchange="shift">
+ <swiper class='sheet' current='{{id}}'>
    <block wx:for="{{qnaire}}">
-     <swiper-item>
+     <swiper-item catchtouchmove='catchTouchMove'>
        <form bindsubmit='submit'>
          <view class='naire'>
            <view class='question'>{{item.question}}</view>

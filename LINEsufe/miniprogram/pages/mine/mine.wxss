@@ -121,4 +121,6 @@ p{
 }
 .avatar{
   float: left;
+  width: 100rpx;
+  height: 100rpx;
 }

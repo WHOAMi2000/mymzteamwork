@@ -15,12 +15,8 @@ Page({
     //console.log(e.detail.value)
   },
 
-  shift: function(e){
-    if(e.detail.current <= 19 && e.detail.current >= 0){
-      this.setData({
-        id: e.detail.current,
-      })
-    }
+  catchTouchMove: function(){
+    
   },
    
   nextq: function () {
@@ -44,7 +40,7 @@ Page({
     this.setData({
       answer: ans,
     })
-    //console.log(this.data.answer);
+    console.log(this.data.answer);
     if (this.data.id < 19) {
       this.setData({
         id: this.data.id + 1,

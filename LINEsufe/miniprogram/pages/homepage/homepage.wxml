@@ -59,10 +59,10 @@
 
     <view class='looking'>
       <view class='passive'>
-        <i-card title="谁看过ta">
+        <i-card title="喜欢ta的人">
           <block wx:if="{{looked.length!=0}}" wx:for="{{looked}}" wx:key="key">
             <view class="item"  slot="content">
-              <i-avatar class="avatar" src="/images/female.png" size="large"></i-avatar>
+              <i-avatar class="avatar" src="{{item['pu']}}" size="large"></i-avatar>
               <view class="intro">
                 <span class="name">{{item["name"]}}</span>
                 <view class="quote">{{item["brief"]}}</view>
@@ -73,10 +73,10 @@
         </i-card>
       </view>
       <view class='active'>
-        <i-card title="ta看过谁">
+        <i-card title="ta喜欢的人">
           <block wx:if="{{looking.length!=0}}" wx:for="{{looking}}" wx:key="key">
             <view class="item"  slot="content">
-              <i-avatar class="avatar" src="/images/male.png" size="large"></i-avatar>
+              <i-avatar class="avatar" src="{{item['pu']}}" size="large"></i-avatar>
               <view class="intro">
                 <span class="name">{{item["name"]}}</span>
                 <view class="quote">{{item["brief"]}}</view>

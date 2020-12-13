@@ -14,7 +14,8 @@ Page({
     self_introduction:'',
     userid:0,
     url:[],
-    tags_color:['red','blue','green']
+    tags_color:['red','blue','green'],
+    sex:true
   },
 
   unique:function(arr){            
@@ -29,6 +30,29 @@ Page({
     return arr;
     },
 
+    onTap1NavigateTo(e) {
+      //console.log(e)
+      let id= e.currentTarget.dataset.id;
+      console.log(e.currentTarget.dataset.id);
+      //console.log(id, e)
+  
+      wx.navigateTo({
+        url: '/pages/homepage/homepage?id='+id
+      })
+    },
+
+    onTap2NavigateTo(e) {
+      //console.log(e)
+      console.log(e.currentTarget.dataset.id);
+      let id= e.currentTarget.dataset.id;
+  
+      //console.log(id, e)
+  
+      wx.navigateTo({
+        url: '/pages/homepage/homepage?id='+id
+      })
+    },
+
   SetMydata:function() {
     var userid = wx.getStorageSync('id');//获取用户id
     var that = this;
@@ -36,28 +60,31 @@ Page({
     db.collection('users').where({id:userid}).get().then(res=>{
       {var lookedid = res.data[0].looked;
       var lookingid = res.data[0].looking;
-      var info = {id:0,name:'',brief:''};
+      var s = res.data[0].sex;
+      var info = {id1:0,name:'',brief:'',pu:''};
       var dinfo = [];
       var ginfo = [];
       for(var i=0;i<lookedid.length;i++){
         var id = lookedid[i];
         db.collection('users').where({id:id}).get().then(r=>{
-          info['id'] = r.data[0].id;
+          info['id1'] = r.data[0].id;
           info['name'] = r.data[0].name;
           info['brief'] = r.data[0].BriefIntroduction;
+          info['pu'] = r.data[0].photourl;
           dinfo.push(info);
-          info = {id:0,name:'',brief:''};
+          info = {id1:0,name:'',brief:'',pu:''};
         })
       }
       dinfo = this.unique(dinfo)
       for(var i=0;i<lookingid.length;i++){
         var id = lookingid[i];
         db.collection('users').where({id:id}).get().then(s=>{
-          info['id'] = s.data[0].id;
+          info['id2'] = s.data[0].id;
           info['name'] = s.data[0].name;
           info['brief'] = s.data[0].BriefIntroduction;
+          info['pu'] = s.data[0].photourl;
           ginfo.push(info);
-          info = {id:0,name:'',brief:''};
+          info = {id2:0,name:'',brief:'',pu:''};
         })
       }}
       ginfo = this.unique(ginfo)
@@ -66,6 +93,7 @@ Page({
         data:{userid:userid,looked:res.data[0].looked,looking:res.data[0].looking},
         success: res => {
           that.setData({
+            sex:s,
             url: res.result.url,
             looking:ginfo,
             looked:dinfo,
@@ -104,7 +132,6 @@ Page({
              "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
            });
            photourl = res.fileID;
-           console.log(res.fileID);
            wx.cloud.callFunction({
              name: 'Update_picpho',//云函数名称为photoupload
              data :
@@ -142,7 +169,6 @@ Page({
              this.setData({
                "user.photourl": res.fileID//res.fileID就是该图片的云存储路径
              });
-             console.log(res.fileID);
              wx.cloud.callFunction({
                name: 'Update_picpho',//云函数名称为photoupload
                data :

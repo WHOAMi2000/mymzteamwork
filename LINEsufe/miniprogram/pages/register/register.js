@@ -49,33 +49,37 @@ Page({
             content: "密码必须同时包含字母和数字"
           })
         } else {
-          var count = 0
-          users.get({
+          var count = 0;
+          users.orderBy('id','desc').limit(1).get({
             success:res=>{
-              var reset = res.data
-              page.setData({count : reset.length+10001})
-              console.log(reset.length);
-            }
-          })
-          var lianjiefu = "%"
+              var reset = res.data;
+              var lastid = reset[0].id
+              console.log(" lastid",typeof(lastid));
+              page.setData({count : (lastid + 1)})
+              console.log(page.data.count);
+              var lianjiefu = "%"
           users.add({
             data: {
               userid: userid,
               password: password1,
-              id:count,
+              id:(lastid + 1),
               LoginCheck: userid+lianjiefu+password1,
-              BriefIntroduction:'',
-              SelfIntroduction:'',
+              BriefIntroduction:'这个人很懒，什么也没有留下',
+              SelfIntroduction:'这个人很懒，什么也没有留下',
               friends:[],
               looked:[],
               looking:[],
-              name:'',
-              photourl:'',
+              name:'未命名游客' + Math.random().toString(),
+              photourl:'../../images/timg.jpg',
               picurl:[],
               sex:true,
-              tags:[]
+              tags:['一个很懒的人']
             }
           })
+            }
+            
+          })
+          
           wx.showModal({
             titel: "提示",
             content: "注册成功!请登录",

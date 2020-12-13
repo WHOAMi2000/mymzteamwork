@@ -1,6 +1,6 @@
 <view class="container">
   <view class="image">
-    <image class="pic" src="/images/logo.png" mode="aspectFill" ></image>
+    <image class="pic" src="/images/logo1.png" mode="aspectFill" ></image>
   </view>
   <!-- <text class="header">登录</text> -->
   <view class="form">

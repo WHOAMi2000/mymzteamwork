@@ -66,10 +66,10 @@
 
     <view class='looking'>
       <view class='passive'>
-        <i-card title="谁看过我">
+        <i-card title="喜欢我的人">
           <block wx:for="{{looked}}" wx:key="key">
-            <view class="item"  slot="content">
-              <i-avatar class="avatar" src="/images/female.png" size="large"></i-avatar>
+            <view class="item"  slot="content" data-id="{{item['id1']}}" catchtap="onTap1NavigateTo">
+              <i-avatar class="avatar" src="{{item['pu']}}" size="large" mode="aspectFill"></i-avatar>
               <view class="intro">
                 <span class="name">{{item["name"]}}</span>
                 <view class="quote">{{item["brief"]}}</view>
@@ -80,10 +80,10 @@
         </i-card>
       </view>
       <view class='active'>
-        <i-card  title="我看过谁">
+        <i-card  title="我喜欢的人">
           <block wx:for="{{looking}}" wx:key="key">
-            <view class="item"  slot="content">
-              <i-avatar class="avatar" src="/images/male.png" size="large"></i-avatar>
+            <view class="item"  slot="content" data-id="{{item['id2']}}" catchtap="onTap2NavigateTo">
+              <i-avatar class="avatar" src="{{item['pu']}}" size="large" mode="aspectFill"></i-avatar>
               <view class="intro">
                 <span class="name">{{item["name"]}}</span>
                 <view class="quote">{{item["brief"]}}</view>

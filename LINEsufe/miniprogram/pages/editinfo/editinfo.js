@@ -36,11 +36,11 @@ Page({
   formSubmit: function(e) {
     var id = wx.getStorageSync('id');
     var tags = [];
-    if(e.detail.value.t1 != "无标签") tags.push(e.detail.value.t1);
-    if(e.detail.value.t2 != "无标签") tags.push(e.detail.value.t2);
-    if(e.detail.value.t3 != "无标签") tags.push(e.detail.value.t3);
-    if(e.detail.value.t4 != "无标签") tags.push(e.detail.value.t4);
-    if(e.detail.value.t5 != "无标签") tags.push(e.detail.value.t5);
+    if(e.detail.value.t1 != "无标签" && e.detail.value.t1 != '' ) tags.push(e.detail.value.t1);
+    if(e.detail.value.t2 != "无标签" && e.detail.value.t2 != '' ) tags.push(e.detail.value.t2);
+    if(e.detail.value.t3 != "无标签" && e.detail.value.t3 != '' ) tags.push(e.detail.value.t3);
+    if(e.detail.value.t4 != "无标签" && e.detail.value.t4 != '' ) tags.push(e.detail.value.t4);
+    if(e.detail.value.t5 != "无标签" && e.detail.value.t5 != '' ) tags.push(e.detail.value.t5);
     wx.cloud.callFunction({
       name: 'updateinfo',
       data:{
