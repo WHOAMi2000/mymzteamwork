@@ -1,6 +1,5 @@
 {
   "pages":[
-
     "pages/login/login",
     "pages/register/register",
     "pages/friends/friends",
